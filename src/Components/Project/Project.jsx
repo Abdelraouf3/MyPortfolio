@@ -25,6 +25,23 @@ export default function Project() {
         return () => window.removeEventListener('keydown', handleKey);
     }, [lightboxIndex]);
 
+    useEffect(() => {
+        const toPreload = [];
+    
+        if (prevProject) {
+            toPreload.push(prevProject.imageCover, ...prevProject.shots);
+        }
+        if (nextProject) {
+            toPreload.push(nextProject.imageCover, ...nextProject.shots);
+        }
+    
+        toPreload.forEach(src => {
+            const img = new Image();
+            img.src = process.env.PUBLIC_URL + src;
+        });
+    
+    }, [id]);
+
     // ✅ Sort by rank to match Home and Work page order
     const sortedWorks = [...Works].sort((a, b) => a.rank - b.rank);
     const currentIndex = sortedWorks.findIndex(w => w.id === parseInt(id));
