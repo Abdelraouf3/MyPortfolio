@@ -7,14 +7,12 @@ import { Link, useNavigate, useParams } from 'react-router-dom'
 export default function Project() {
 
     const { id } = useParams();
-
-    let navigate = useNavigate();
+    const navigate = useNavigate();
 
     const item = Works.find(item => item.id === parseInt(id));
 
     const [lightboxIndex, setLightboxIndex] = useState(null);
-    // null = closed, 0/1/2 = open at that index
-    
+
     // Close on Escape, navigate with arrow keys
     useEffect(() => {
         const handleKey = (e) => {
@@ -27,13 +25,15 @@ export default function Project() {
         return () => window.removeEventListener('keydown', handleKey);
     }, [lightboxIndex]);
 
-    // Get current index and prev/next projects
-    const currentIndex = Works.findIndex(w => w.id === parseInt(id));
-    const prevProject = Works[currentIndex - 1] || null;
-    const nextProject = Works[currentIndex + 1] || null;
+    // ✅ Sort by rank to match Home and Work page order
+    const sortedWorks = [...Works].sort((a, b) => a.rank - b.rank);
+    const currentIndex = sortedWorks.findIndex(w => w.id === parseInt(id));
+    const prevProject = sortedWorks[currentIndex - 1] || null;
+    const nextProject = sortedWorks[currentIndex + 1] || null;
 
     const { email, phone, whatsappURL, linkedinURL, githubURL } = PersonalInformation[0];
 
+    // ✅ Guard — must be after all hooks
     if (!item) return <div className='section container'>Item not found</div>;
 
     return (
@@ -47,20 +47,17 @@ export default function Project() {
                     <div className="projectDetails">
                     
                         <div className="image">
-                        
                             <img src={process.env.PUBLIC_URL + item.imageCover} alt={item.title} />
-                        
                         </div>
                     
-                        <div className='d-flex align-items-center justify-content-between'>
+                        {/* ✅ Single status check — no duplication */}
+                        <div className='d-md-flex align-items-center justify-content-between'>
 
                             <h4 className="title">{item.title}</h4>
                         
-                            {item.status === "in progress" 
-                                ? <span className="badge bg-warning text-dark">🚧 Under Development</span>
-                                : <div className="d-flex gap-2">
-                                
-                                            {item.status === "in progress" 
+                            <div className="d-flex justify-content-center gap-2 mb-2">
+
+                                {item.status === "in progress" 
                                     ? <span className="badge bg-warning text-dark">🚧 Under Development</span>
                                     : <a target='_blank' rel="noopener noreferrer" href={item.liveDemo} className="demoBtn">
                                         <i className="fa-solid fa-arrow-up-right-from-square"></i> Live Demo
@@ -72,9 +69,8 @@ export default function Project() {
                                         <i className="fa-brands fa-github"></i> Source Code
                                     </a>
                                 )}
-                                
-                                    </div>
-                            }
+
+                            </div>
                         
                         </div>
                     
@@ -87,29 +83,22 @@ export default function Project() {
                             <div className="shotTitle">
                             
                                 <h4>shots:</h4>
-                            
-                                {/* <div className="imagesGroup">
-                                
+
+                                {/* ── Original static shots — kept for reference ──
+                                <div className="imagesGroup">
                                     <div className="image">
-                                    
                                         <img src={process.env.PUBLIC_URL + item.shots[0]} alt={`${item.title}-image`} />
-                                    
                                     </div>
-                                
                                     <div className="image">
-                                    
                                         <img src={process.env.PUBLIC_URL + item.shots[1]} alt={`${item.title}-image-2`} />
-                                    
                                     </div>
-                                
                                     <div className="image">
-                                    
                                         <img src={process.env.PUBLIC_URL + item.shots[2]} alt={`${item.title}-image-3`} />
-                                    
                                     </div>
-                                
-                                </div> */}
+                                </div>
+                                ── End original ── */}
                             
+                                {/* ✅ Dynamic shots with lightbox */}
                                 <div className="imagesGroup">
                                     {item.shots.map((shot, index) => (
                                         <div className="image" key={index} onClick={() => setLightboxIndex(index)}>
@@ -176,49 +165,46 @@ export default function Project() {
                             </div>
                         
                         </div>
+
+                        {/* ✅ Prev / Next navigation — sorted by rank */}
+                        <div className="projectNav">
+                        
+                            {prevProject ? (
+                                <Link to={`/project/${prevProject.id}`} className="projectNavBtn projectNavBtn--prev">
+                                    <div className="projectNavArrow">
+                                        <i className="fa-solid fa-arrow-left"></i>
+                                    </div>
+                                    <div className="projectNavInfo">
+                                        <span>Previous</span>
+                                        <h4>{prevProject.title}</h4>
+                                    </div>
+                                </Link>
+                            ) : <div />}
+                        
+                            {nextProject ? (
+                                <Link to={`/project/${nextProject.id}`} className="projectNavBtn projectNavBtn--next">
+                                    <div className="projectNavInfo">
+                                        <span>Next</span>
+                                        <h4>{nextProject.title}</h4>
+                                    </div>
+                                    <div className="projectNavArrow">
+                                        <i className="fa-solid fa-arrow-right"></i>
+                                    </div>
+                                </Link>
+                            ) : <div />}
+                        
+                        </div>
                     
                     </div>
                 
-                    <div className="projectNav">
-                    
-                        {prevProject ? (
-                            <Link to={`/project/${prevProject.id}`} className="projectNavBtn projectNavBtn--prev">
-                                <div className="projectNavArrow">
-                                    <i className="fa-solid fa-arrow-left"></i>
-                                </div>
-                                <div className="projectNavInfo">
-                                    <span>Previous</span>
-                                    <h4>{prevProject.title}</h4>
-                                </div>
-                            </Link>
-                        ) : <div />}
-                    
-                        {nextProject ? (
-                            <Link to={`/project/${nextProject.id}`} className="projectNavBtn projectNavBtn--next">
-                                <div className="projectNavInfo">
-                                    <span>Next</span>
-                                    <h4>{nextProject.title}</h4>
-                                </div>
-                                <div className="projectNavArrow">
-                                    <i className="fa-solid fa-arrow-right"></i>
-                                </div>
-                            </Link>
-                        ) : <div />}
-                    
-                    </div>
-                
-                    <div className="text-center d-none d-md-block">
-                        
-                            <Link to='/work' className='primaryBtn'>explore all works</Link>
-                        
+                    <div className="text-center d-none d-md-block mt-4">
+                        <Link to='/work' className='primaryBtn'>explore all works</Link>
                     </div>
                 
                     <div className="btns d-flex justify-content-center gap-2 d-md-none">
-                    
-                        <Link onClick={() => { navigate(-1) }} className='smallScreenBtn'>Back (Projects)</Link>
-                    
+                        {/* ✅ button instead of Link for back navigation */}
+                        <button onClick={() => navigate(-1)} className='smallScreenBtn'>Back (Projects)</button>
                         <Link to='/navigate' className='smallScreenBtn'>Navigate</Link>
-                    
                     </div>
                 
                 </div>
@@ -236,38 +222,29 @@ export default function Project() {
                     <div className="row justify-content-center">
                         <div className="col-sm-6 col-lg-4">
                             <div className="box linkedIn">
-                                <a target='_blank' rel="noopener noreferrer" href={linkedinURL}>LinkedIn</a>
+                                <a rel="noopener noreferrer" href={linkedinURL}>LinkedIn</a>
                             </div>
                         </div>
-
                         <div className="col-sm-6 col-lg-4">
                             <div className="box github">
-                                <a target='_blank' rel="noopener noreferrer" href={githubURL}>Github</a>
+                                <a rel="noopener noreferrer" href={githubURL}>Github</a>
                             </div>
                         </div>
-
                         <div className="col-sm-6 col-lg-4">
                             <div className="box gmail">
-                                <a target='_blank' rel="noopener noreferrer" href={`mailto:${email}`}>{email}</a>
+                                <a href={`mailto:${email}`}>{email}</a>
                             </div>
                         </div>
-
                         <div className="col-sm-6 col-lg-4">
                             <div className="box whatsapp">
-                                <a target='_blank' rel="noopener noreferrer" href={whatsappURL}>Whatsapp</a>
+                                <a rel="noopener noreferrer" href={whatsappURL}>Whatsapp</a>
                             </div>
                         </div>
-
                         <div className="col-sm-6 col-lg-4">
                             <div className="box phone">
-                                <a target='_blank' rel="noopener noreferrer" href={`tel:+${phone}`}>+{phone}</a>
+                                <a href={`tel:+${phone}`}>+{phone}</a>
                             </div>
                         </div>
-                    </div>
-
-                    <div className="btns d-flex justify-content-center gap-2 d-md-none">
-                        <Link to='/info' className='smallScreenBtn'>Back (Info)</Link>
-                        <Link to='/skills' className='smallScreenBtn'>Next (Skills)</Link>
                     </div>
                 </div>
             </section> 

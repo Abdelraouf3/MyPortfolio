@@ -119,8 +119,8 @@
         "description": "A movie streaming web application built with ReactJS, SCSS, Bootstrap, and Axios. Fetches real-time movie and TV show data from an external API, featuring a dynamic homepage, category browsing, and smooth carousels using Splide.js.",
         "technologies": "HTML5, SCSS, Bootstrap, ReactJs, SplideJs, Axios",
         "imageCover": "/ProjectsImages/MovieApp3.png",
-        "image": "/ProjectsImages/MovieApp.png",
-        "shots": ["/ProjectsImages/MovieApp.png","/ProjectsImages/MovieApp2.png","/ProjectsImages/MovieApp3.png"],
+        "image": "/ProjectsImages/MovieApp3.png",
+        "shots": ["/ProjectsImages/MovieApp.png","/ProjectsImages/MovieApp3.png","/ProjectsImages/MovieApp3.png"],
         "liveDemo": "",
         "githubURL": "",
         "status": "in progress"
