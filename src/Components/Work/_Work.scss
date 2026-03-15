@@ -1,0 +1,154 @@
+@import "../Style/Base/Base";
+@import "../Style/Layout/Layout";
+
+.work {
+
+    .filterGroup {
+    display: flex;
+    flex-wrap: wrap;
+    gap: 10px;
+    margin-bottom: 40px;
+
+    .filterBtn {
+        padding: 10px 22px;
+        border-radius: 50px;
+        border: 2px solid $lightBlue;
+        background: transparent;
+        color: $lightBlue;
+        font-size: 14px;
+        font-weight: 600;
+        cursor: pointer;
+        transition: all 0.3s ease;
+        position: relative;
+        overflow: hidden;
+
+        &::before {
+            content: '';
+            position: absolute;
+            inset: 0;
+            background: $linearGradient;
+            background-size: 200% auto;
+            opacity: 0;
+            transition: all 0.3s ease;
+            z-index: 0;
+        }
+
+        span {
+            position: relative;
+            z-index: 1;
+        }
+
+        .count {
+            display: inline-flex;
+            align-items: center;
+            justify-content: center;
+            width: 20px;
+            height: 20px;
+            border-radius: 50%;
+            font-size: 11px;
+            margin-left: 7px;
+            background: rgba(63, 81, 181, 0.15);
+            color: $lightBlue;
+            transition: all 0.3s;
+        }
+
+        &:hover, &.active {
+            color: $whiteColor;
+            border-color: transparent;
+            transform: translateY(-2px);
+
+            &::before { opacity: 1; background-position: right center; }
+
+            .count {
+                background: rgba(255, 255, 255, 0.25);
+                color: $whiteColor;
+            }
+        }
+    }
+}
+
+    .view {
+    
+        .project {
+    
+            .image {
+                margin-bottom: 15px;
+                overflow: hidden;
+                border: 1px solid $whiteLowOpacity;
+            
+                img {
+                    height: 300px;
+                    width: 100%; // fills the column
+                    object-fit: cover;
+                    transition: all .5s;
+                    -webkit-transition: all .5s;
+                    -moz-transition: all .5s;
+                    -ms-transition: all .5s;
+                    -o-transition: all .5s;
+                
+                    // @media (max-width: 768px) {
+                    //     height: 250px; // ← smaller height on tablets
+                    // }
+                
+                    @media (max-width: 480px) {
+                        height: 180px; // ← even smaller on phones
+                    }
+                }
+            }
+        
+            .title {
+                color: $darkBlue;
+                font-family: $fontNunito;
+                font-weight: 700;
+                font-size: 21px;
+                position: relative;
+            
+                &::after {
+                    content: "";
+                    position: absolute;
+                    left: 0;
+                    bottom: -5px;
+                    width: 0;
+                    height: 2px;
+                    background-color: $darkBlue;
+                    transition: all .5s;
+                    -webkit-transition: all .5s;
+                    -moz-transition: all .5s;
+                    -ms-transition: all .5s;
+                    -o-transition: all .5s;
+                }
+            
+            }
+        
+            .technologies {
+                font-size: 16px;
+                margin-top: 10px;
+                margin-bottom: 35px;
+                color: $gray;
+                transition: all .5s;
+                -webkit-transition: all .5s;
+                -moz-transition: all .5s;
+                -ms-transition: all .5s;
+                -o-transition: all .5s;
+            }
+        
+        }
+    
+        &:hover img{
+            transform: scale(1.05);
+            -webkit-transform: scale(1.05);
+            -moz-transform: scale(1.05);
+            -ms-transform: scale(1.05);
+            -o-transform: scale(1.05);
+        }
+    
+        &:hover .title::after {
+            width: 100%;
+        }
+    
+        &:hover .technologies {
+            color: $lightBlue;
+        }
+    
+    }
+}

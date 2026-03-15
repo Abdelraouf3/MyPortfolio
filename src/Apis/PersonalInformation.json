@@ -1,0 +1,46 @@
+[
+    {
+        "id": 1,
+        "logo": "/images/myName-logo2.png",
+        "name": "Abdelraouf Halaby",
+        "email": "oofa.00halaby@gmail.com",
+        "phone": "201154812462",
+        "address": "Damanhour, Elbehira, Egypt",
+        "profileImg": "/images/profilePic-removebg-preview.png",
+        "profilePic": "/images/profilePic.jpg",
+        "title": "Frontend Developer",
+        "brief": "“I am a web developer with knowledge of many different front-end and back-end technologies, databases, and best coding practices. Continuously striving to expand my expertise, I am passionate about learning and mastering new development skills. My ability to solve complex problems and implement efficient algorithms has been instrumental in my success as a developer and will continue to drive my growth.”",
+        "smallBrief": "“I am a web developer with knowledge of many different front-end and back-end technologies, databases, and best coding practices.”",
+        "facebookURL": "https://www.facebook.com/abdelrouaf.halaby",
+        "instagramURL": "https://www.instagram.com/abdelruoaf/",
+        "whatsappURL": "https://wa.me/+201154812462",
+        "linkedinURL": "https://www.linkedin.com/in/abdelraouf-halaby-578913235/",
+        "githubURL": "https://github.com/Abdelrouaf",
+        "skills": [
+            "/images/python.png",
+            "/images/c++.png",
+            "/images/html-5.png",
+            "/images/css-3.png",
+            "/images/bootstrap.png",
+            "/images/sass.png",
+            "/images/tailwindcss2.png",
+            "/images/js.png",
+            "/images/react.png",
+            "/images/database.png",
+            "/images/php.png"
+        ],
+        "skillsName": [
+            "python",
+            "c++",
+            "HTML5",
+            "CSS3",
+            "bootstrap",
+            "sass",
+            "tailwindcss",
+            "javaScript",
+            "react js",
+            "sql",
+            "php"
+        ]
+    }
+]

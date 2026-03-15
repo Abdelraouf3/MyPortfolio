@@ -1,0 +1,36 @@
+name: Build
+
+on:
+  push:
+    branches:
+      - main
+  pull_request:
+    branches:
+      - main
+
+jobs:
+  Build:
+    runs-on: ubuntu-latest
+    steps:
+      - uses: actions/checkout@v2
+      - uses: actions/setup-node@v2
+        with:
+          node-version: '14'
+
+      - name: Modify package.json 
+        run: |
+          export home_url="$(cat pages_url.txt)"
+          sed '2a\  "homepage": "'$home_url'",' package.json > new_p.json
+          rm package.json
+          mv new_p.json package.json
+      
+      - name: Build
+        run: |
+          npm ci
+          npm run build
+      
+      - name: Deploy 🚀
+        uses: JamesIves/github-pages-deploy-action@v4.2.5
+        with:
+          branch: gh-pages # The branch the action should deploy to.
+          folder: build # The folder the action should deploy.

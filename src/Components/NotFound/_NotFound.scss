@@ -1,0 +1,13 @@
+@import "../Style/Base/Base";
+
+.error {
+    font-family: $fontNunito;
+    text-align: center;
+    padding: 5% 0;
+}
+
+.image {
+    display: flex;
+    align-items: center;
+    justify-content: center;
+}

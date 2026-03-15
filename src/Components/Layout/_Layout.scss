@@ -1,0 +1,9 @@
+@import "../Style/Base/Base";
+@import "../Style/Layout/Layout";
+
+.centerPage {
+    width: 100%;
+    min-height: 100vh;
+    padding-top: 60px;
+    box-shadow: rgba(14, 17, 51, 0.212) 0px 5px 60px 0px;
+}

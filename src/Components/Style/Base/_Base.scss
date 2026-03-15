@@ -1,0 +1,27 @@
+@import '../Variables/Variables';
+
+html {
+    scroll-behavior: smooth;
+    // scrollbar-color: $BlueColor $blackColor;
+}
+
+body {
+    background-color: $whiteColor;
+}
+
+* {
+    box-sizing: border-box;
+}
+
+a {
+    text-decoration: none;
+}
+
+h1, h2, h3, h4, h5, h6, p {
+    margin: 0;
+}
+
+::selection {
+    background-color: rgb(15 23 42);
+    color: rgb(255 255 255);
+}

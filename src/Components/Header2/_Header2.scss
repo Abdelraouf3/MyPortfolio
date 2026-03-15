@@ -1,0 +1,66 @@
+@import "../Style/Base/Base";
+@import "../Style/Layout/Layout";
+
+.smallScreen {
+    position: fixed;
+    top: 0;
+    left: 0;
+    right: 0;
+    background-color: #e2e3e5;
+    transition: all .5s;
+    -webkit-transition: all .5s;
+    -moz-transition: all .5s;
+    -ms-transition: all .5s;
+    -o-transition: all .5s;
+    padding-block: 8px;
+    height: 50px;
+    z-index: 1000;
+
+    .logo {
+    
+        a {
+            display: inline-block;
+            background-color: red;
+            border: 1px solid $blackColor;
+            width: 10px;
+            height: 10px;
+            border-radius: 50px;
+            -webkit-border-radius: 50px;
+            -moz-border-radius: 50px;
+            -ms-border-radius: 50px;
+            -o-border-radius: 50px;
+            transition: all .5s;
+            -webkit-transition: all .5s;
+            -moz-transition: all .5s;
+            -ms-transition: all .5s;
+            -o-transition: all .5s;
+        
+            &:hover {
+                transform: scale(1.25);
+                -webkit-transform: scale(1.25);
+                -moz-transform: scale(1.25);
+                -ms-transform: scale(1.25);
+                -o-transform: scale(1.25);
+                filter: brightness(1.5);
+                -webkit-filter: brightness(1.5);
+}
+            
+        
+        }
+    
+    }
+
+    .navigate {
+    
+        .navigateTitle {
+            font-size: 16px;
+            background-color: $whiteColor;
+            padding: 8px 50px;
+            border-radius: 25px;
+            text-transform: capitalize;
+        
+        }
+    
+    }
+
+}
