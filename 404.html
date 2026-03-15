@@ -1,0 +1,21 @@
+<!DOCTYPE html>
+<html>
+  <head>
+    <meta charset="utf-8">
+    <title>Abdelraouf Halaby</title>
+    <script>
+      var path = window.location.pathname;
+      var search = window.location.search;
+      var hash = window.location.hash;
+      var redirect = path.slice(1).split('/').slice(1).join('/');
+      window.location.replace(
+        '/' + window.location.pathname.split('/')[1] +
+        '/?p=/' + redirect +
+        (search ? '&q=' + search.slice(1) : '') +
+        hash
+      );
+      
+    </script>
+  </head>
+  <body>Redirecting...</body>
+</html>
