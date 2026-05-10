@@ -1,6 +1,6 @@
 [
     {
-        "id": 0,
+        "id": 1,
         "rank": 3,
         "title": "Typing-speed-test",
         "category": "Web Apps",
@@ -14,7 +14,7 @@
         "status": "live"
     },
     {
-        "id": 1,
+        "id": 2,
         "rank": 4,
         "title": "Create Your Website - Landing Page",
         "category": "React Projects",
@@ -28,7 +28,7 @@
         "status": "live"
     },
     {
-        "id": 2,
+        "id": 3,
         "rank": 2,
         "title": "E-Commerce",
         "category": "Web Apps",
@@ -42,7 +42,7 @@
         "status": "live"
     },
     {
-        "id": 3,
+        "id": 4,
         "rank": 7,
         "title": "Travel & explore",
         "category": "Web Apps",
@@ -56,7 +56,7 @@
         "status": "live"
     },
     {
-        "id": 4,
+        "id": 5,
         "rank": 8,
         "title": "Digital Marketing Website",
         "category": "Web Apps",
@@ -70,8 +70,8 @@
         "status": "live"
     },
     {
-        "id": 5,
-        "rank": 11,
+        "id": 6,
+        "rank": 10,
         "title": "Investments & FinTech",
         "category": "Landing Pages",
         "description": "A clean and modern FinTech landing page built with HTML5, CSS3, and Bootstrap. Designed to present financial and e-commerce services with a professional layout and smooth scroll animations.",
@@ -84,8 +84,8 @@
         "status": "live"
     },
     {
-        "id": 6,
-        "rank": 13,
+        "id": 7,
+        "rank": 12,
         "title": "Portfolio",
         "category": "Landing Pages",
         "description": "A personal portfolio landing page built with pure HTML5 and CSS3, no frameworks. Showcases projects, skills, and contact information through a clean, hand-crafted responsive design.",
@@ -98,8 +98,8 @@
         "status": "live"
     },
     {
-        "id": 7,
-        "rank": 12,
+        "id": 8,
+        "rank": 11,
         "title": "Finance Consultation",
         "category": "Landing Pages",
         "description": "A finance consultation landing page built with HTML5 and CSS3. Designed to present financial planning and investment advisory services with a professional, trustworthy layout and responsive design.",
@@ -112,7 +112,7 @@
         "status": "live"
     },
     {
-        "id": 8,
+        "id": 9,
         "rank": 1,
         "title": "Free Movies Online",
         "category": "React Projects",
@@ -126,7 +126,7 @@
         "status": "in progress"
     },
     {
-        "id": 9,
+        "id": 10,
         "rank": 9,
         "title": "Interior design",
         "category": "Landing Pages",
@@ -139,7 +139,7 @@
         "status": "live"
     },
     {
-        "id": 10,
+        "id": 11,
         "rank": 6,
         "title": "To Do List",
         "category": "Web Apps",
@@ -149,19 +149,6 @@
         "shots": ["/ProjectsImages/toDoList4.png","/ProjectsImages/toDoList2.png","/ProjectsImages/toDoList3.png"],
         "liveDemo": "https://abdelrouaf.github.io/ToDoList/",
         "githubURL": "https://github.com/Abdelrouaf/ToDoList",
-        "status": "live"
-    },
-    {
-        "id": 11,
-        "rank": 10,
-        "title": "Solar panel",
-        "category": "Landing Pages",
-        "description": "A professional landing page for a solar panel installation company, built with HTML5 and CSS3. Includes a hero slider, company values section, off-grid and on-grid product kits, trusted partner logos, customer testimonials, and a newsletter subscription — designed to build trust and convert visitors into leads.",        "technologies": "HTML5, CSS3",
-        "imageCover": "/ProjectsImages/solar2.png",
-        "image": "/ProjectsImages/solar3.png",
-        "shots": ["/ProjectsImages/solar.png","/ProjectsImages/solar2.png","/ProjectsImages/solar3.png"],
-        "liveDemo": "https://abdelrouaf.github.io/LandingPage-Solar-Company/",
-        "githubURL": "https://github.com/Abdelrouaf/LandingPage-Solar-Company",
         "status": "live"
     },
     {
