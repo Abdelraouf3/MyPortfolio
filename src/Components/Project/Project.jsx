@@ -23,7 +23,13 @@ export default function Project() {
         }
         window.addEventListener('keydown', handleKey);
         return () => window.removeEventListener('keydown', handleKey);
-    }, [lightboxIndex]);
+    }, [lightboxIndex, item.shots.length]);
+
+    // ✅ Sort by rank to match Home and Work page order
+    const sortedWorks = [...Works].sort((a, b) => a.rank - b.rank);
+    const currentIndex = sortedWorks.findIndex(w => w.id === parseInt(id));
+    const prevProject = sortedWorks[currentIndex - 1] || null;
+    const nextProject = sortedWorks[currentIndex + 1] || null;
 
     useEffect(() => {
         const toPreload = [];
@@ -40,13 +46,7 @@ export default function Project() {
             img.src = process.env.PUBLIC_URL + src;
         });
     
-    }, [id]);
-
-    // ✅ Sort by rank to match Home and Work page order
-    const sortedWorks = [...Works].sort((a, b) => a.rank - b.rank);
-    const currentIndex = sortedWorks.findIndex(w => w.id === parseInt(id));
-    const prevProject = sortedWorks[currentIndex - 1] || null;
-    const nextProject = sortedWorks[currentIndex + 1] || null;
+    }, [id, prevProject, nextProject]);
 
     const { email, phone, whatsappURL, linkedinURL, githubURL } = PersonalInformation[0];
 

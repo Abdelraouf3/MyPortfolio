@@ -9,8 +9,6 @@ import './_Home.scss'
 
 export default function Home() {
 
-    const [dataWork] = useState(Works);
-
     const sorted = [...Works].sort((a, b) => a.rank - b.rank).slice(0, 6)
 
     const { name, email, phone, profileImg, title, brief, smallBrief, facebookURL, whatsappURL, linkedinURL, githubURL, skills, skillsName } = PersonalInformation[0];
