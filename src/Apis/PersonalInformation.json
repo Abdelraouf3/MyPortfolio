@@ -25,6 +25,7 @@
             "/images/sass.png",
             "/images/tailwindcss2.png",
             "/images/js.png",
+            "/images/typescript.png",
             "/images/react.png",
             "/images/database.png",
             "/images/php.png"
@@ -38,6 +39,7 @@
             "sass",
             "tailwindcss",
             "javaScript",
+            "typeScript",
             "react js",
             "sql",
             "php"
