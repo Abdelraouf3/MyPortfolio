@@ -163,5 +163,18 @@
         "liveDemo": "https://abdelrouaf.github.io/BookMarker/",
         "githubURL": "https://github.com/Abdelrouaf/BookMarker/",
         "status": "live"
+    },
+    {
+        "id": 13,
+        "rank": 5,
+        "title": "Task Management",
+        "category": "React Projects",
+        "description": "A responsive task management app built with React 18 and Redux Toolkit. Features add, edit, delete, and toggle completion for tasks, priority-based filtering (High / Medium / Low).",
+        "imageCover": "/ProjectsImages/task-management.png",
+        "image": "/ProjectsImages/task-management.png",
+        "shots": ["/ProjectsImages/task-management.png","/ProjectsImages/task-management2.png","/ProjectsImages/task-management3.png"],
+        "liveDemo": "https://task-management-list-six.vercel.app/",
+        "githubURL": "https://github.com/Abdelrouaf/Task-Management",
+        "status": "live"
     }
 ]
