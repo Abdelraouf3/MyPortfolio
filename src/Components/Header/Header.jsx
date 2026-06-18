@@ -63,13 +63,27 @@ export default function Header() {
                                 
                                     <li className="nav-item">
                                     
-                                        <Link className="nav-link" to="/#work">latest projects</Link>
+                                        <Link className="nav-link" to="/work">latest projects</Link>
                                     
                                     </li>
                                 
                                     <li className="nav-item">
                                     
                                         <Link className="nav-link" to='/contact'>contact</Link>
+                                    
+                                    </li>
+                                
+                                    <li className="nav-item">
+                                    
+                                        <a 
+                                            className="nav-link" 
+                                            href={process.env.PUBLIC_URL + '/CV/cv.pdf'} 
+                                            download="cv.pdf"
+                                            target="_blank"
+                                            rel="noopener noreferrer"
+                                        >
+                                            download CV
+                                        </a>
                                     
                                     </li>
                                 

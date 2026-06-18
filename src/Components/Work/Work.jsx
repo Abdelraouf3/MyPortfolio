@@ -16,8 +16,8 @@ export default function Work() {
     const categories = [
         { label: 'All', key: 'all' },
         { label: 'React Projects', key: 'React Projects' },
-        { label: 'Web Apps', key: 'Web Apps' },
-        { label: 'Landing Pages', key: 'Landing Pages' },
+        { label: 'Vanilla JS', key: 'Vanilla JS' },
+        { label: 'HTML & CSS', key: 'HTML & CSS' },
     ]
 
     const [activeCategory, setActiveCategory] = useState('all')
@@ -65,20 +65,104 @@ export default function Work() {
                     </div>
                     {/* ──────────────────────────────────────────────────────── */}
                 
-                    <div className="row align-items-baseline">
+                    <div className="row justify-content-center">
                     
                         {/* ── Active project list (with filter) ────────────── */}
                         {filtered.map((work) => (
-                            <div className="col-lg-6" key={work.id}>
-                                <Link to={`/project/${work.id}`} className='view'>
-                                    <div className="project">
+                            <div className="col-lg-6 mb-4" key={work.id}>
+                            
+                                <div className="project">
+                                
+                                    <Link to={`/project/${work.id}`} className="view">
+                    
                                         <div className="image">
-                                            <img src={process.env.PUBLIC_URL + work.imageCover} alt={work.title} />
+                    
+                                            <img
+                                                src={process.env.PUBLIC_URL + work.imageCover}
+                                                alt={`${work.title}-image`}
+                                            />
+                    
                                         </div>
-                                        <h4 className="title">{work.title}</h4>
-                                        <h4 className="technologies">{work.technologies}</h4>
+                    
+                                    </Link>
+                    
+                                    <div className='project-details'>
+                                    
+                                        <div className="d-flex justify-content-between align-items-center gap-2">
+                                        
+                                            <Link to={`/project/${work.id}`} className="view">
+                            
+                                                <h4 className="title">
+                                                    {work.title}
+                                                </h4>
+                            
+                                            </Link>
+                                        
+                                            {work.status === "in progress" 
+                                                && <span className="badge bg-warning text-dark">🚧 Under Development</span>
+                                            }
+                                        
+                                        </div>
+                                    
+                                        <p className="description">{work.description}</p>
+                                    
+                                        <div className="technologies-list">
+                        
+                                            {work.technologies
+                                                .split(',')
+                                                .map((tech, index) => (
+                        
+                                                    <span
+                                                        key={index}
+                                                        className="tech-badge"
+                                                    >
+                                                        {tech.trim()}
+                                                    </span>
+                        
+                                                ))}
+                                        </div>
+                        
+                                        <div className="project-buttons">
+                        
+                                            { work.liveDemo.length <= 0 ? 
+                                            
+                                                <Link to={`/project/${work.id}`} rel="noreferrer" className="primaryBtn">
+                                
+                                                    View Project Details
+                                
+                                                </Link>
+                                            
+                                                :  <a
+                                                        href={work.liveDemo}
+                                                        target="_blank"
+                                                        rel="noreferrer"
+                                                        className="primaryBtn"
+                                                    >
+                                                        Live Demo <i className="fa-solid fa-arrow-up-right-from-square"></i>
+                                                    </a> 
+                                            }
+                                        
+                                            { work.liveDemo.length > 0 && ( 
+                                            
+                                                <a
+                                                    href={work.githubURL}
+                                                    target="_blank"
+                                                    rel="noreferrer"
+                                                    className="btn btn-dark github-btn"
+                                                >
+                                                    <i className="fa-brands fa-github"></i>
+                                                </a>
+                                            
+                                            )  }
+                        
+                                            
+                        
+                                        </div>
+                                    
                                     </div>
-                                </Link>
+                    
+                                </div>
+                            
                             </div>
                         ))}
                         {/* ──────────────────────────────────────────────────── */}
