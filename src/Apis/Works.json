@@ -42,6 +42,20 @@
         "status": "live"
     },
     {
+        "id": 14,
+        "rank": 3,
+        "title": "Taw3ya (Quran & Azkar)",
+        "category": "React Projects",
+        "description": "A modern, responsive Islamic web app for reading the Holy Quran and reciting daily Azkar (remembrances). Built with a warm, premium aesthetic and a focus on readability, the app brings together Quran recitation, multilingual translations, and authentic supplications in one clean interface.",
+        "technologies": "ReactJs, JavaScript, API, Tailwind, HTML5, CSS3, Font Awesome, Motion.",
+        "imageCover": "/ProjectsImages/Quran-cover.png",
+        "image": "/ProjectsImages/Quran-cover.png",
+        "shots": ["/ProjectsImages/Quran1.png", "/ProjectsImages/Quran2.png", "/ProjectsImages/Azkar1.png","/ProjectsImages/Azkar2.png"],
+        "liveDemo": "https://taw3yaa.vercel.app/",
+        "githubURL": "https://github.com/Abdelraouf3/Taw3ya",
+        "status": "live"
+    },
+    {
         "id": 3,
         "rank": 4,
         "title": "E-Commerce",
