@@ -9,7 +9,7 @@ export default function Home() {
 
     const sorted = [...Works].sort((a, b) => a.rank - b.rank).slice(0, 6)
 
-    const { name, email, phone, profileImg, title, brief, smallBrief, facebookURL, whatsappURL, linkedinURL, githubURL, skills, skillsName } = PersonalInformation[0];
+    const { name, email, phone, profileImg, title, brief, smallBrief, whatsappURL, linkedinURL, githubURL, skills, skillsName } = PersonalInformation[0];
 
     const { hash } = useLocation();
     const sectionARef = useRef(null);
@@ -90,8 +90,6 @@ export default function Home() {
                                         <h4>Follow me on: </h4>
                                     
                                         <div className="social d-flex gap-4 align-items-center">
-                                        
-                                            {/* <a target='_blank' rel="noopener noreferrer" href={facebookURL}><i className="fa-brands fa-facebook-f"></i></a> */}
                                         
                                             <a target='_blank' rel="noopener noreferrer" href={githubURL}><i className="fa-brands fa-github"></i></a>
                                         
