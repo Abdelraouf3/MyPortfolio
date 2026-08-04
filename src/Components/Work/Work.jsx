@@ -69,7 +69,7 @@ export default function Work() {
                     
                         {/* ── Active project list (with filter) ────────────── */}
                         {filtered.map((work) => (
-                            <div className="col-lg-6 mb-4" key={work.id}>
+                            <div className="col-md-6 col-lg-4 mb-4" key={work.id}>
                             
                                 <div className="project">
                                 

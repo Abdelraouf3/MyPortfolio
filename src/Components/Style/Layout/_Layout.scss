@@ -1,4 +1,4 @@
-@import "../Variables/Variables";
+@use '../Abstracts' as *;
 
 .section {
     padding-bottom: 80px;
@@ -12,7 +12,8 @@
     transition: all 0.5s;
     background-size: 200% auto;
     color: white;
-    box-shadow: 0 0 20px #eee;
+    // box-shadow: 0 0 20px #eee;
+    box-shadow: 0 0 20px var(--shadow-card);
     border-radius: 10px;
     -webkit-transition: all 0.5s;
     -moz-transition: all 0.5s;
@@ -50,7 +51,7 @@
 
     .brief{
         margin-top: 20px;
-        color: $darkBlue;
+        color: var(--color-text);
         line-height: 30px;
         font-size: 14px;
         font-family: $fontWeatherRegular;
@@ -60,7 +61,7 @@
 }
 
 .secondBtn {
-    color: $blackColor;
+    color: var(--color-text);
     font-family: $fontVicMedium;
     font-size: 20px;
     text-transform: capitalize;
@@ -126,7 +127,7 @@
     }
 
     .subTitle {
-        color: $blackColor;
+        color: var(--color-text);
         text-transform: capitalize;
         font-size: 35px;
         font-family: $fontWeatherBold;
@@ -146,10 +147,10 @@
 }
 
 .box {
-    background-color: $whiteColor;
+    background-color: var(--color-bg);
     margin: 20px 0;
     padding: 40px 20px;
-    box-shadow: rgb(14 17 51 / 10%) 0px 5px 60px 0px;
+    box-shadow: var(--shadow-card) 0px 5px 60px 0px;
     border-radius: 10px;
     -webkit-border-radius: 10px;
     -moz-border-radius: 10px;
@@ -158,7 +159,7 @@
 }
 
 .personalSkill {
-    color: $darkBlue;
+    color: var(--color-dark-blue);
     margin-top: 20px;
     text-transform: capitalize;
     font-family: $fontVicBold;
@@ -173,9 +174,9 @@
 }
 
 .smallScreenBtn {
-    color: $blackColor;
-    background-color: $whiteColor;
-    border: 2px solid $blackColor;
+    color: var(--color-text);
+    background-color: var(--color-bg);
+    border: 2px solid var(--color-text);
     text-transform: capitalize;
     padding: 8px 25px;
     transition: all .5s;
@@ -186,7 +187,7 @@
 
     &:hover {
         background-color: $lightBlack;
-        color: $whiteColor;
+        color: var(--color-bg);
     }
 }
 
@@ -197,15 +198,16 @@
 }
 
 .boxShadow {
-    box-shadow: rgb(14 17 51 / 10%) 0px 5px 60px 0px;
+    // box-shadow: rgb(14 17 51 / 10%) 0px 5px 60px 0px;
+    box-shadow: var(--color-shadow);
     margin-bottom: 50px;
     text-align: center;
 
     .title {
-        color: $blackColor;
-        background-color: $whiteColor;
+        color: var(--color-text);
+        background-color: var(--color-bg);
         font-size: 18px;
-        border: 2px solid $blackColor;
+        border: 2px solid var(--color-text);
         padding: 10px 15px;
         position: relative;
     
@@ -218,7 +220,7 @@
             bottom: 0;
             width: 100%;
             height: 100%;
-            background-color: $blackColor;
+            background-color: var(--color-text);
             z-index: -1;
         
         }
@@ -231,7 +233,7 @@
     margin-top: 30px;
 
     .linkShadow {
-        background-color: $whiteColor;
+        background-color: var(--color-bg);
         border: 2px solid $lightBlue;
         position: relative;
         margin: 0 20px 20px;
@@ -272,7 +274,7 @@
         }
     
         &:hover a {
-            color: $whiteColor;
+            color: var(--color-bg);
         
         }
     

@@ -1,44 +1,42 @@
-@import "../Style/Base/Base";
-@import "../Style/Layout/Layout";
+@use '../Style/Abstracts' as *;
 
 .viewProject {
 
-
     .projectDetails {
-    
-      .demoBtn {
-          color: $lightBlue;
-          border: 2px solid $lightBlue;
-          padding: 8px 20px;
-          border-radius: 25px;
-          font-weight: 700;
-          font-size: 14px;
-          transition: all .5s;
-          -webkit-transition: all .5s;
-      
-          i {
-              margin-right: 6px;
-          }
-      
-          &:hover {
-              background-color: $lightBlue;
-              color: $whiteColor;
-          }
-      }
-    
+
+        .demoBtn {
+            color: $lightBlue;
+            border: 2px solid $lightBlue;
+            padding: 8px 20px;
+            border-radius: 25px;
+            font-weight: 700;
+            font-size: 14px;
+            transition: all .5s;
+            -webkit-transition: all .5s;
+        
+            i {
+                margin-right: 6px;
+            }
+        
+            &:hover {
+                background-color: $lightBlue;
+                color: $whiteColor;
+            }
+        }
+
         .title {
             margin-block: 20px;
             font-size: 30px;
         
         }
-    
+
         .description {
             margin-bottom: 20px;
             font-size: 20px;
             font-family: $fontNunito;
             line-height: 35px;
         }
-    
+
         .technologies {
             margin-bottom: 50px;
         
@@ -48,7 +46,7 @@
             }
         
         }
-    
+
         .shots {
             margin-bottom: 100px;
         
@@ -59,7 +57,7 @@
                 margin-bottom: 15px;
             }
         }
-    
+
     }
 
 }
@@ -251,7 +249,7 @@
         padding: 15px 20px;
         border-radius: 12px;
         border: 1px solid $borderColor;
-        background-color: $whiteColor;
+        background-color: var(--color-bg);
         transition: all .4s;
         -webkit-transition: all .4s;
         max-width: 45%;
@@ -302,7 +300,7 @@
 
             h4 {
                 font-size: 15px;
-                color: $darkBlue;
+                color: var(--color-dark-blue);
                 margin-top: 4px;
                 font-family: $fontNunito;
                 font-weight: 700;

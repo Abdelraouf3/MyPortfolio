@@ -29,7 +29,7 @@
     },
     {
         "id": 13,
-        "rank": 2,
+        "rank": 4,
         "title": "Task Management",
         "category": "React Projects",
         "description": "A responsive task management application built with React, Redux Toolkit, and Tailwind CSS. Features date-based task scheduling, recurring tasks (daily, weekly, monthly), pinned tasks, priority management, completion tracking by date, task descriptions, filtering, manual task reordering, and productivity analytics. Implemented centralized state management with Redux Toolkit and persistent localStorage storage to maintain task history across sessions. Designed with a scalable architecture and responsive user experience across desktop and mobile devices.",
@@ -57,7 +57,7 @@
     },
     {
         "id": 3,
-        "rank": 4,
+        "rank": 2,
         "title": "E-Commerce",
         "category": "Vanilla JS",
         "description": "A fully responsive e-commerce web application built with HTML5, CSS3, Bootstrap, and JavaScript. Features a product catalog, shopping cart, category filtering, and a clean checkout UI with animated interactions using WOW.js.",

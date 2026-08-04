@@ -1,0 +1,11 @@
+@use "./Components/Style/Base/Base";
+@use "./Components/Style/Layout/Layout" as layoutStyles;
+
+@use "./Components/Footer/Footer";
+@use "./Components/Header/Header";
+@use "./Components/Header2/Header2";
+@use "./Components/Home/Home";
+@use "./Components/Layout/Layout" as layoutComponent;
+@use "./Components/NotFound/NotFound";
+@use "./Components/Work/Work";
+@use "./Components/Project/Project"

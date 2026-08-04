@@ -43,11 +43,11 @@ export default function Skills() {
                                 
                                 <div className="col-md-6 col-lg-3" key={`${skill}-${index}`}>
                         
-                                    <div className="box text-center">
+                                    <div className="box skillsBox text-center">
                                     
                                         <div className="image">
                                         
-                                            <img src={process.env.PUBLIC_URL + skill} width={100} alt={skillsName[index]} />
+                                            <img src={process.env.PUBLIC_URL + skill} alt={skillsName[index]} />
                                         
                                         </div>
                                     
