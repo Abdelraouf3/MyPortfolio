@@ -4,6 +4,12 @@
 
     .projectDetails {
 
+        .image {
+            border: 1px solid var(--color-text);
+            border-radius: 10px;
+            overflow: hidden;
+        }
+
         .demoBtn {
             color: $lightBlue;
             border: 2px solid $lightBlue;

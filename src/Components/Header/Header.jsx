@@ -1,7 +1,9 @@
 import React, { useEffect, useState } from 'react'
+import { Link } from 'react-router-dom'
+import { motion } from 'motion/react'
+import { itemVariantsFromUp, listVariants } from '../../animations/variants'
 import PersonalInformation from '../../Apis/PersonalInformation.json'
 import './_Header.scss'
-import { Link } from 'react-router-dom'
 
 export default function Header() {
 
@@ -49,9 +51,15 @@ export default function Header() {
                 
                     <div className="container">
                     
-                        <div className="d-flex justify-content-between align-items-center w-100">
+                        <div className="d-flex justify-content-between align-items-center w-100"
+                            // variants={ listVariants }
+                            // initial="hidden"
+                            // animate="visible"
+                            >
                         
-                            <div className="logo">
+                            <div className="logo"
+                                // variants={ itemVariantsFromUp }
+                                >
                             
                                 <Link className="navbar-brand" onClick={scrollToTop} to="/"><img src={process.env.PUBLIC_URL + logo} width={100} alt="Abdelraouf Halaby logo" /></Link>
                             
@@ -59,33 +67,44 @@ export default function Header() {
                         
                             <div className="collapse navbar-collapse text-end justify-content-end" id="navbarSupportedContent">
                             
-                                <ul className="navbar-nav mb-2 mb-lg-0">
+                                <ul className="navbar-nav mb-2 mb-lg-0"
+                                    >
                                 
-                                    <li className="nav-item">
+                                    <li className="nav-item"
+                                        // variants={itemVariantsFromUp}
+                                        >
                                     
                                         <Link className="nav-link" aria-current="page" to="/#brief">brief</Link>
                                     
                                     </li>
                                 
-                                    <li className="nav-item">
+                                    <li className="nav-item"
+                                        // variants={itemVariantsFromUp}
+                                        >
                                     
                                         <Link className="nav-link" to='/skills'>skills</Link>
                                     
                                     </li>
                                 
-                                    <li className="nav-item">
+                                    <li className="nav-item"
+                                        // variants={itemVariantsFromUp}
+                                        >
                                     
                                         <Link className="nav-link" to="/work">latest projects</Link>
                                     
                                     </li>
                                 
-                                    <li className="nav-item">
+                                    <li className="nav-item"
+                                        // variants={itemVariantsFromUp}
+                                        >
                                     
                                         <Link className="nav-link" to='/contact'>contact</Link>
                                     
                                     </li>
                                 
-                                    <li className="nav-item">
+                                    <li className="nav-item"
+                                        // variants={itemVariantsFromUp}
+                                        >
                                     
                                         <a 
                                             className="nav-link" 
@@ -101,7 +120,11 @@ export default function Header() {
                                 
                                 </ul>
                             
-                                <div className="theme-switch-wrapper">
+                                <div className="theme-switch-wrapper"
+                                    // initial={{ opacity : 0, x : 100 }}
+                                    // animate={{ opacity : 1, x : 0 }}
+                                    // transition={{ duration : 1.6, type: "spring" }}
+                                    >
                                 
                                     <label className="theme">
                                     

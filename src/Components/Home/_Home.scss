@@ -7,7 +7,7 @@
     // background-size: cover;
     background-color: var(--color-hero-bg);
     overflow: hidden;
-    // height: 100vh;
+    // height: 80vh;
 
     .row {
         position: relative;
@@ -198,7 +198,7 @@
             .image {
                 position: relative;
                 
-                &::before {
+                .beforeImage {
                     content: "";
                     position: absolute;
                     left: 0;
@@ -208,22 +208,24 @@
                     width: 85%;
                     height: 90%;
                     margin: 0 auto;
-                    background-color: #1e90ff;
+                    // background-color: #1e90ff;
+                    background: $linearGradient;
                     z-index: -5;
                 }
             
-                &::after {
+                .afterImage {
                     content: "";
                     position: absolute;
                     left: 0;
-                    right: 10%;
-                    top: 23%;
+                    right: 5%;
+                    // top: 23%;
                     bottom: 0;
-                    width: 90%;
-                    height: 83%;
+                    width: 85%;
+                    height: 80%;
                     margin: 0 auto;
                     background-color: transparent;
                     border: 2px solid var(--personal-image-frame);
+                    // transform-origin: left bottom;
                     z-index: -1;
                 }
             
@@ -377,6 +379,92 @@
     }
 
 }
+
+.experience {
+    background-color: var(--color-hero-bg);
+
+    .subTitle {
+        font-size: 50px;
+    }
+
+    .timeline {
+        position: relative;
+        max-width: 900px;
+        margin: 0 auto;
+        overflow: hidden;
+    
+        &::before {
+            content: '';
+            position: absolute;
+            top: 14px;
+            /* Aligns exactly with the vertical center of the first dot */
+            bottom: 14px;
+            /* Stops exactly at the center of the last dot */
+            left: 50%;
+            transform: translateX(-50%);
+            border-left: 2px dashed #b5c0be;
+            z-index: 1;
+        }
+    
+        span {
+            color: var(--color-text)
+        }
+    
+        p {
+            color: var(--color-text)
+        }
+    
+        .timeline-item {
+            position: relative;
+            z-index: 2;
+            margin-bottom: 3.5rem;
+        
+            &:last-child {
+                margin-bottom: 0;
+            }
+        }
+    
+        .timeline-dot {
+            width: 28px;
+            height: 28px;
+            border-radius: 50%;
+            border: 2px dashed #b5c0be;
+            position: relative;
+            z-index: 3;
+            background-color: var(--color-hero-bg);
+            display: flex;
+            align-items: center;
+            justify-content: center;
+            margin-top: -2px;
+        
+            &::after {
+                content: '';
+                width: 14px;
+                height: 14px;
+                border-radius: 50%;
+            }
+        }
+    
+        /* Accent colors */
+        .dot-teal::after {
+            background-color: #0d8a74;
+        }
+
+        .dot-orange::after {
+            background-color: #ff5722;
+        }
+
+        .dot-yellow::after {
+            background-color: #ffc107;
+        }
+
+        .dot-indigo::after {
+            background-color: #4f46e5;
+        }
+    }
+}
+
+
 
 .contact2 {
 

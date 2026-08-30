@@ -6,10 +6,10 @@ import { Link, useNavigate, useParams } from 'react-router-dom'
 
 export default function Project() {
 
-    const { id } = useParams();
+    const { rank } = useParams();
     const navigate = useNavigate();
 
-    const item = Works.find(item => item.id === parseInt(id));
+    const item = Works.find(item => item.rank === parseInt(rank));
 
     const [lightboxIndex, setLightboxIndex] = useState(null);
 
@@ -27,7 +27,7 @@ export default function Project() {
 
     // ✅ Sort by rank to match Home and Work page order
     const sortedWorks = [...Works].sort((a, b) => a.rank - b.rank);
-    const currentIndex = sortedWorks.findIndex(w => w.id === parseInt(id));
+    const currentIndex = sortedWorks.findIndex(w => w.rank === parseInt(rank));
     const prevProject = sortedWorks[currentIndex - 1] || null;
     const nextProject = sortedWorks[currentIndex + 1] || null;
 
@@ -46,7 +46,7 @@ export default function Project() {
             img.src = process.env.PUBLIC_URL + src;
         });
     
-    }, [id, prevProject, nextProject]);
+    }, [rank, prevProject, nextProject]);
 
     const { email, phone, whatsappURL, linkedinURL, githubURL } = PersonalInformation[0];
 
@@ -64,7 +64,7 @@ export default function Project() {
                     <div className="projectDetails">
                     
                         <div className="image">
-                            <img src={process.env.PUBLIC_URL + item.imageCover} alt={item.title} />
+                            <img src={process.env.PUBLIC_URL + item.imageCover2} alt={item.title} />
                         </div>
                     
                         {/* ✅ Single status check — no duplication */}
@@ -187,7 +187,7 @@ export default function Project() {
                         <div className="projectNav">
                         
                             {prevProject ? (
-                                <Link to={`/project/${prevProject.id}`} className="projectNavBtn projectNavBtn--prev">
+                                <Link to={`/project/${prevProject.rank}`} className="projectNavBtn projectNavBtn--prev">
                                     <div className="projectNavArrow">
                                         <i className="fa-solid fa-arrow-left"></i>
                                     </div>
@@ -199,7 +199,7 @@ export default function Project() {
                             ) : <div />}
                         
                             {nextProject ? (
-                                <Link to={`/project/${nextProject.id}`} className="projectNavBtn projectNavBtn--next">
+                                <Link to={`/project/${nextProject.rank}`} className="projectNavBtn projectNavBtn--next">
                                     <div className="projectNavInfo">
                                         <span>Next</span>
                                         <h4>{nextProject.title}</h4>

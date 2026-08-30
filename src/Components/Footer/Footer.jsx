@@ -22,8 +22,6 @@ export default function Footer() {
                 
                     <div className="social">
                     
-                        <a target='_blank' rel="noopener noreferrer" href='https://www.facebook.com/abdelrouaf.halaby' aria-label="Facebook Profile"><i className="fa-brands fa-facebook-f"></i></a>
-                    
                         <a target='_blank' rel="noopener noreferrer" href='https://github.com/Abdelrouaf' aria-label="GitHub Profile"><i className="fa-brands fa-github"></i></a>
                     
                         <a target='_blank' rel="noopener noreferrer" href='https://wa.me/+201154812462' aria-label="Whatsapp"><i className="fa-brands fa-whatsapp"></i></a>

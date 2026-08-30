@@ -73,12 +73,12 @@ export default function Work() {
                             
                                 <div className="project">
                                 
-                                    <Link to={`/project/${work.id}`} className="view">
+                                    <Link to={`/project/${work.rank}`} className="view">
                     
                                         <div className="image">
                     
                                             <img
-                                                src={process.env.PUBLIC_URL + work.imageCover}
+                                                src={process.env.PUBLIC_URL + work.imageCover2}
                                                 alt={`${work.title}-image`}
                                             />
                     
@@ -90,7 +90,7 @@ export default function Work() {
                                     
                                         <div className="d-flex justify-content-between align-items-center gap-2">
                                         
-                                            <Link to={`/project/${work.id}`} className="view">
+                                            <Link to={`/project/${work.rank}`} className="view">
                             
                                                 <h4 className="title">
                                                     {work.title}
@@ -126,7 +126,7 @@ export default function Work() {
                         
                                             { work.liveDemo.length <= 0 ? 
                                             
-                                                <Link to={`/project/${work.id}`} rel="noreferrer" className="primaryBtn">
+                                                <Link to={`/project/${work.rank}`} rel="noreferrer" className="primaryBtn">
                                 
                                                     View Project Details
                                 

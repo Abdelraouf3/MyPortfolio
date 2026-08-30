@@ -1,8 +1,11 @@
 import React, { useEffect, useRef } from 'react'
+import { Link, useLocation } from 'react-router-dom'
+import { motion } from 'motion/react'
+import { Splide, SplideSlide } from '@splidejs/react-splide';
+import '@splidejs/splide/css'; 
+import { listVariants, itemVariantsFromDown, itemVariantsFromUp, itemVariantsFromLeft, itemVariantsFromRight } from '../../animations/variants'
 import PersonalInformation from '../../Apis/PersonalInformation.json'
 import Works from '../../Apis/Works.json'
-import "../Work/_Work.scss"
-import { Link, useLocation } from 'react-router-dom'
 import './_Home.scss'
 
 export default function Home() {
@@ -43,29 +46,44 @@ export default function Home() {
             }
         }, []);
 
-
     return (
         <>
         
             <section className="welcome2 section d-none d-md-block">
             
-                <div className="container">
+                <div className="container h-100">
                 
-                    <div className="row align-items-center justify-content-between">
+                    <div className="row align-items-center justify-content-between h-100">
                     
                         <div className="col-md-6">
                 
-                            <div className="personalInformation">
+                            <div className="personalInformation"
+                                // variants={listVariants}
+                                // initial='hidden'
+                                // animate='visible'
+                                >
                             
-                                <span className="title">{title}</span>
+                                <span className="title"
+                                    // variants={itemVariantsFromDown}
+                                    >
+                                    {title}
+                                </span>
                             
-                                <h4 className="name">{name}</h4>
+                                <h4 className="name" 
+                                    // variants={itemVariantsFromDown}
+                                >
+                                    {name}
+                                </h4>
                             
-                                <p className="brief">
-                                    {smallBrief}
+                                <p className="brief"
+                                    // variants={itemVariantsFromDown}
+                                >
+                                    {brief}
                                 </p>
                             
-                                <div className="d-flex align-items-center gap-3">
+                                <div className="d-flex align-items-center gap-3"
+                                    // variants={itemVariantsFromDown}
+                                    >
                                 
                                     <Link to="/work" className='primaryBtn'>explore projects</Link>
                                 
@@ -83,13 +101,34 @@ export default function Home() {
                             
                                 <div className="image text-center">
                                 
+                                    <span className='beforeImage'
+                                    // animate={{
+                                    //     scale: [0, 1.1, 1.1, 1, 1],
+                                    //     rotate: [0, 0, 180, 180, 0],
+                                    //     borderRadius: ["0%", "0%", "50%", "50%", "50%"],
+                                    // }}
+                                    // transition={{
+                                    //     duration: 2,
+                                    //     ease: "easeInOut",
+                                    //     times: [0, 0.2, 0.5, 0.8, 1],
+                                    // }}
+                                    ></span>
+                                
                                     <img src={process.env.PUBLIC_URL + profileImg}  alt="Personal-image" loading='lazy' />
                                 
-                                    <div className="followSocial d-flex align-items-center">
+                                    <div className="followSocial d-flex align-items-center"
+                                        // variants={listVariants}
+                                        // initial={'hidden'}
+                                        // animate={'visible'}
+                                    >
                                 
-                                        <h4>Follow me on: </h4>
+                                        <h4 
+                                            // variants={itemVariantsFromRight}
+                                        >Follow me on: </h4>
                                     
-                                        <div className="social d-flex gap-4 align-items-center">
+                                        <div className="social d-flex gap-4 align-items-center" 
+                                            // variants={itemVariantsFromRight}
+                                            >
                                         
                                             <a target='_blank' rel="noopener noreferrer" href={githubURL}><i className="fa-brands fa-github"></i></a>
                                         
@@ -98,6 +137,21 @@ export default function Home() {
                                         </div>
                                     
                                     </div>
+                                
+                                    <span className="afterImage"
+                                        // animate={{
+                                        //     scale: [0, 1.1, 1, 1.1, 1],
+                                        //     translateX: ["-300%", "0%"],
+                                        //     rotate: [-360, 0],
+                                        //     // borderRadius: ["0%", "0%", "50%", "50%", "0%"],
+                                        // }}
+                                        // transition={{
+                                        //     duration: 2,
+                                        //     ease: "easeInOut",
+                                        //     times: [0, 0.2, 0.5, 0.8, 1],
+                                        // }}
+                                        >
+                                    </span>
                                 
                                 </div>
                             
@@ -129,7 +183,11 @@ export default function Home() {
             
             </section>
         
-            <section className="brief section d-none d-lg-block" ref={sectionARef} id='brief'>
+            {/* <motion.section className="brief section d-none d-lg-block" ref={sectionARef} id='brief'
+                variants={listVariants}
+                initial='hidden'
+                whileInView="visible"
+            >
             
                 <div className="container">
                 
@@ -137,7 +195,9 @@ export default function Home() {
                     
                         <div className="col-lg-3">
                         
-                            <div className="left"></div>
+                            <motion.div className="left"
+                                variants={itemVariantsFromLeft}
+                            ></motion.div>
                         
                         </div>
                     
@@ -145,15 +205,28 @@ export default function Home() {
                         
                             <div className="personalInformation">
                             
-                                <span className="title">{title}</span>
+                                <motion.span className="title"
+                                    variants={itemVariantsFromUp}
+                                >
+                                    {title}
+                                </motion.span>
                                 
-                                <h4 className="name">{name}</h4>
+                                <motion.h4 className="name" 
+                                    variants={itemVariantsFromUp}
+                                >
+                                    {name}
+                                </motion.h4>
                             
-                                <p className="brief">
+                                <motion.p className="brief"
+                                    variants={itemVariantsFromDown}>
                                     {brief}
-                                </p>
+                                </motion.p>
                             
-                                <Link to="/work" className='primaryBtn'>explore projects</Link>
+                                <motion.div variants={itemVariantsFromDown}>
+                                
+                                    <Link to="/work" className='primaryBtn'>explore projects</Link>
+                                
+                                </motion.div>
                             
                             </div>
                         
@@ -163,11 +236,11 @@ export default function Home() {
                         
                             <div className="slider">
                             
-                                <div className="dotOne dot"></div>
+                                <motion.div className="dotOne dot" variants={itemVariantsFromUp}></motion.div>
                             
                                 <div className="dotTwo dot"></div>
                             
-                                <div className="dotThree dot"></div>
+                                <motion.div className="dotThree dot" variants={itemVariantsFromDown}></motion.div>
                             
                             </div>
                         
@@ -177,7 +250,7 @@ export default function Home() {
                 
                 </div>
             
-            </section>
+            </motion.section> */}
         
             <section className="skills section d-md-block d-none">
             
@@ -239,23 +312,254 @@ export default function Home() {
             
             </section>
         
+            <section className="experience section d-md-block d-none">
+            
+                <div className="container">
+                
+                    <div className="infoTitles">
+                    
+                        <h2 className="subTitle text-center">My Work <span className="changeColor">Experience</span></h2>
+                    
+                    </div>
+                
+                    <div className="timeline">
+                    
+                        <div className="row timeline-item align-items-start">
+                        
+                            <div className="col-5 text-end pe-4">
+                            
+                                <h5 className="fw-bold mb-1">Up Arrow Partners</h5>
+                            
+                                <span className="small">April 2026 - June 2026  </span>
+                            
+                            </div>
+                        
+                            <div className="col-2 d-flex justify-content-center">
+                            
+                                <div className="timeline-dot dot-orange"></div>
+                            
+                            </div>
+                        
+                            <div className="col-5 ps-4">
+                            
+                                <h5 className="fw-bold text-dark-blue mb-2">Frontend Developer & QA</h5>
+                            
+                                <ul>
+                                
+                                    <li>
+                                    
+                                        <p className="small mb-0 lh-base">
+                                            Debugged and resolved 15+ frontend issues across React components, improving 
+                                                application stability and reducing UI errors by ~30% during testing. 
+                                        </p>
+                                    
+                                    </li>
+                                
+                                    <li>
+                                    
+                                        <p className="small mb-0 lh-base">
+                                            Identified and optimized 3 rendering bottlenecks in rendering logic, improving perceived 
+                                                load performance by ~25% and UI responsiveness.  
+                                        </p>
+                                    
+                                    </li>
+                                
+                                    <li>
+                                    
+                                        <p className="small mb-0 lh-base">
+                                            Improved SEO structure across 10+ key pages by updating meta tags, page structure, and 
+                                                indexing readiness for key pages. 
+                                        </p>
+                                    
+                                    </li>
+                                
+                                    <li>
+                                    
+                                        <p className="small mb-0 lh-base">
+                                            Collaborated with a team of 3-4 developers to fix UI inconsistencies across 10+ 
+                                                components, enhancing overall user experience.
+                                        </p>
+                                    
+                                    </li>
+                                
+                                </ul>
+                            
+                            </div>
+                        
+                        </div>
+                    
+                        <div className="row timeline-item align-items-start">
+                        
+                            <div className="col-5 text-end pe-4">
+                            
+                                <h5 className="fw-bold mb-1">Egyptian Armed Forces</h5>
+                            
+                                <span className="small">Jan 2025 – March 2026  </span>
+                            
+                            </div>
+                        
+                            <div className="col-2 d-flex justify-content-center">
+                            
+                                <div className="timeline-dot dot-yellow"></div>
+                            
+                            </div>
+                        
+                            <div className="col-5 ps-4">
+                            
+                                <h5 className="fw-bold text-dark-blue mb-2">Military Service</h5>
+                            
+                                {/* <span className="small">Jan 2025 – March 2026  </span> */}
+                            
+                            </div>
+                        
+                        </div>
+                    
+                        <div className="row timeline-item align-items-start">
+                        
+                            <div className="col-5 text-end pe-4">
+                            
+                                <h5 className="fw-bold text-dark-blue mb-1">Taw3ya</h5>
+                            
+                                <span className="small">July 2024 - Jan 2025</span>
+                            
+                            </div>
+                        
+                            <div className="col-2 d-flex justify-content-center">
+                            
+                                <div className="timeline-dot dot-teal"></div>
+                            
+                            </div>
+                        
+                            <div className="col-5 ps-4">
+                            
+                                <h5 className="fw-bold text-dark-blue mb-2">Frontend Developer</h5>
+                            
+                                <ul>
+                                
+                                    <li>
+                                    
+                                        <p className="small mb-0 lh-base">
+                                        
+                                            Developed and distributed a production-ready Quran web application for a private client 
+                                            using React.js, React Router, Bootstrap, and REST APIs, supporting complete Quran 
+                                            content across all chapters. 
+                                        
+                                        </p>
+                                    
+                                    </li>
+                                
+                                    <li>
+                                    
+                                        <p className="small mb-0 lh-base">
+                                        
+                                            Implemented chapter navigation, verse search, audio playback, and dynamic routing 
+                                            across all 114 Quran chapters, improving content accessibility and user navigation. 
+                                        
+                                        </p>
+                                    
+                                    </li>
+                                
+                                    <li>
+                                    
+                                        <p className="small mb-0 lh-base">
+                                        
+                                            Managed project milestones over a 3-month engagement, delivering the application on 
+                                            schedule. 
+                                        
+                                        </p>
+                                    
+                                    </li>
+                                
+                                </ul>
+                            
+                            </div>
+                        
+                        </div>
+                    
+                        <div className="row timeline-item align-items-start">
+                        
+                            <div className="col-5 text-end pe-4">
+                            
+                                <h5 className="fw-bold text-dark-blue mb-1">Master Web</h5>
+                            
+                                <span className="small">Nov 2024 - Jan 2025</span>
+                            
+                            </div>
+                        
+                            <div className="col-2 d-flex justify-content-center">
+                            
+                                <div className="timeline-dot dot-indigo"></div>
+                            
+                            </div>
+                        
+                            <div className="col-5 ps-4">
+                            
+                                <h5 className="fw-bold text-dark-blue mb-2">Frontend Developer Intern</h5>
+                            
+                                <ul>
+                                
+                                    <li>
+                                    
+                                        <p className="small mb-0 lh-base">
+                                        
+                                            Converted 3–4 PSD designs into responsive, pixel-perfect web pages using HTML5, 
+                                            CSS3, and JavaScript. 
+                                        
+                                        </p>
+                                    
+                                    </li>
+                                
+                                    <li>
+                                    
+                                        <p className="small mb-0 lh-base">
+                                        
+                                            Built responsive UI components for 3–4 projects and incorporated feedback from senior 
+                                            developers to improve code quality and maintainability. 
+                                        
+                                        </p>
+                                    
+                                    </li>
+                                
+                                    <li>
+                                    
+                                        <p className="small mb-0 lh-base">
+                                        
+                                            Contributed to 3–4 projects while adhering to company coding standards, improving 
+                                            consistency, maintainability, and responsiveness across presented pages.
+                                        
+                                        </p>
+                                    
+                                    </li>
+                                
+                                </ul>
+                            
+                            </div>
+                        
+                        </div>
+                    
+                    </div>
+                
+                </div>
+            
+            </section>
+        
             <section className="work section d-md-block d-none" ref={sectionBRef} id='work'>
             
                 <div className="container">
                 
                     <div className="infoTitles">
                         
-                        <span className="headTitle">portfolio</span>
+                        <span className="headTitle">Works</span>
                     
                         <h3 className="subTitle">My creative works latest <span className="changeColor">projects</span> </h3>
                     
                         <p className="paragraph">I have selected and mentioned here some of my latest projects to share with you.</p>
                     
-                        <div className="btns">
+                        {/* <div className="btns">
                         
                             <Link to='/work' className='primaryBtn'>show more</Link>
                         
-                        </div>
+                        </div> */}
                     
                     </div>
                 
@@ -272,7 +576,7 @@ export default function Home() {
                                         <div className="image">
                     
                                             <img
-                                                src={process.env.PUBLIC_URL + work.imageCover}
+                                                src={process.env.PUBLIC_URL + work.imageCover2}
                                                 alt={`${work.title}-image`}
                                                 loading='lazy'
                                             />
