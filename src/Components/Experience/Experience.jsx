@@ -1,6 +1,7 @@
 import { motion } from 'motion/react'
 import { itemVariantsFromDown, listVariants } from '../../animations/variants'
 import { Link } from 'react-router-dom'
+
 const Experience = () => {
 
     return (

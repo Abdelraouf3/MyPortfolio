@@ -2,8 +2,6 @@ import { useEffect, useRef } from 'react'
 import { Link, useLocation } from 'react-router-dom'
 import { motion } from 'motion/react'
 import { listVariants, itemVariantsFromDown, itemVariantsFromRight } from '../../animations/variants'
-import Contact from '../Contact/Contact';
-import Skills from '../Skills/Skills';
 import PersonalInformation from '../../Apis/PersonalInformation.json'
 import Works from '../../Apis/Works.json'
 import '@splidejs/splide/css'; 
