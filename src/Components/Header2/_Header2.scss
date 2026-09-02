@@ -5,7 +5,9 @@
     top: 0;
     left: 0;
     right: 0;
-    background-color: #e2e3e5;
+    // background-color: #e2e3e5;
+    background-color: var(--color-text);
+    box-shadow: 4px 4px var(--main-color);
     transition: all .5s;
     -webkit-transition: all .5s;
     -moz-transition: all .5s;
@@ -56,10 +58,14 @@
     
         .navigateTitle {
             font-size: 16px;
-            background-color: $whiteColor;
-            padding: 8px 50px;
+            background-color: var(--color-bg);
+            box-shadow: 4px 4px var(--main-color);
+            padding: 8px 30px;
             border-radius: 25px;
             text-transform: capitalize;
+            overflow: hidden; 
+            text-overflow: ellipsis; 
+            white-space: nowrap;
         
         }
     

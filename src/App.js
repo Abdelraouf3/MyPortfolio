@@ -8,6 +8,9 @@ import Contact from './Components/Contact/Contact';
 import Brief from './Components/Brief/Brief';
 import Navigate from './Components/Navigate/Navigate';
 import Skills from './Components/Skills/Skills';
+import Intro from './Components/Intro/Intro';
+import { useState } from 'react';
+import Experience from './Components/Experience/Experience';
 
 const router = createBrowserRouter(
   
@@ -29,6 +32,8 @@ const router = createBrowserRouter(
       
         <Route path='skills' element={<Skills/>} />
       
+        <Route path='experience' element={<Experience />} />
+      
       </Route>
     
     )
@@ -37,9 +42,26 @@ const router = createBrowserRouter(
 
 function App() {
 
+  const [showIntro, setShowIntro] = useState(() => {
+        return !sessionStorage.getItem('introShown');
+    });
+
+    const handleIntroComplete = () => {
+        sessionStorage.setItem('introShown', 'true');
+        setShowIntro(false);
+    };
+
   return (
 
+    <>
+    
+      {showIntro && (
+        <Intro onComplete={handleIntroComplete} />
+      )}
+    
       <RouterProvider router={router} />
+    
+    </>
 
   );
 }

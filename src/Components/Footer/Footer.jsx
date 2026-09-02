@@ -1,6 +1,6 @@
-import React from 'react'
+import { motion } from 'motion/react'
+import { itemVariantsFromDown, listVariants } from '../../animations/variants'
 import PersonalInformation from '../../Apis/PersonalInformation.json'
-import './_Footer.scss'
 
 const {name} = PersonalInformation[0]
 
@@ -8,25 +8,30 @@ export default function Footer() {
 
     return (
     
-        <footer className="footer">
+        <motion.footer className="footer" 
+            variants={listVariants}
+            initial='hidden'
+            whileInView='visible'
+            viewport={{ once: true }}
+        >
         
             <div className="container">
             
                 <div className="d-flex justify-content-between footer-inner">
-
+                
                     <div className="designedBy">
                     
-                        <h4>Designed by {name}</h4>
+                        <motion.h4 variants={itemVariantsFromDown}>Designed by {name}</motion.h4>
                     
                     </div>
                 
                     <div className="social">
                     
-                        <a target='_blank' rel="noopener noreferrer" href='https://github.com/Abdelrouaf' aria-label="GitHub Profile"><i className="fa-brands fa-github"></i></a>
+                        <motion.a target='_blank' rel="noopener noreferrer" href='https://github.com/Abdelrouaf' aria-label="GitHub Profile" variants={itemVariantsFromDown}><i className="fa-brands fa-github"></i></motion.a>
                     
-                        <a target='_blank' rel="noopener noreferrer" href='https://wa.me/+201154812462' aria-label="Whatsapp"><i className="fa-brands fa-whatsapp"></i></a>
+                        <motion.a target='_blank' rel="noopener noreferrer" href='https://wa.me/+201154812462' aria-label="Whatsapp" variants={itemVariantsFromDown}><i className="fa-brands fa-whatsapp"></i></motion.a>
                     
-                        <a target='_blank' rel="noopener noreferrer" href='https://www.linkedin.com/in/abdelraouf-halaby-578913235/' aria-label="LinkedIn Profile"><i className="fa-brands fa-linkedin-in"></i></a>
+                        <motion.a target='_blank' rel="noopener noreferrer" href='https://www.linkedin.com/in/abdelraouf-halaby-578913235/' aria-label="LinkedIn Profile" variants={itemVariantsFromDown}><i className="fa-brands fa-linkedin-in"></i></motion.a>
                     
                     </div>
                 
@@ -34,7 +39,7 @@ export default function Footer() {
             
             </div>
         
-        </footer>
+        </motion.footer>
     
     )
 }

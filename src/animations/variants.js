@@ -11,6 +11,19 @@ export const listVariants = {
     },
 }
 
+export const titleVariants = {
+    hidden: {
+        opacity: 0,
+    },
+
+    visible: {
+        opacity: 1,
+        transition: {
+            staggerChildren: 0.25,
+        },
+    },
+};
+
 export const itemVariantsFromUp = { 
     hidden : { 
         opacity : 0, 
@@ -67,6 +80,22 @@ export const itemVariantsFromRight = {
     visible : { 
         opacity : 1, 
         x : 0, 
+        transition : { 
+            type : "spring", 
+            stiffness : 200, 
+            damping : 12 
+        } 
+    }
+}
+
+export const itemVariantsScaleUp = { 
+    hidden : { 
+        opacity : 0, 
+        scale: 0
+    },
+    visible : { 
+        opacity : 1, 
+        scale: [1.50, 1],
         transition : { 
             type : "spring", 
             stiffness : 200, 

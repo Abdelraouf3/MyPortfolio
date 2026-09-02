@@ -2,15 +2,21 @@ import React, { useEffect, useState } from 'react'
 import { Link } from 'react-router-dom'
 import { motion } from 'motion/react'
 import { itemVariantsFromUp, listVariants } from '../../animations/variants'
-import PersonalInformation from '../../Apis/PersonalInformation.json'
-import './_Header.scss'
 
 export default function Header() {
 
-    const [theme, setTheme] = useState("light");
+    const [theme, setTheme] = useState( () => {
+    
+        const theme = localStorage.getItem("themePreference");
+        const themeData = theme ?? JSON.parse(theme)
+    
+        return themeData;
+    
+    } );
 
     const toggleTheme = () => {
         setTheme(prev => prev === "light" ? "dark" : "light");
+        localStorage.setItem("themePreference", theme === "light" ? "dark" : "light")
     };
 
     useEffect(() => {
@@ -31,15 +37,15 @@ export default function Header() {
     }
 
     useEffect(() => {
-    window.addEventListener('scroll', changeNavbarColor)
-    return () => window.removeEventListener('scroll', changeNavbarColor)
-}, [])
+        window.addEventListener('scroll', changeNavbarColor)
+        return () => window.removeEventListener('scroll', changeNavbarColor)
+    }, [])
 
     const scrollToTop = () => {
         window.scrollTo({ top: 0, behavior: 'smooth' });
     };
 
-    const { logo } = PersonalInformation[0];
+    // const { logo } = PersonalInformation[0];
 
     return (
     
@@ -51,59 +57,68 @@ export default function Header() {
                 
                     <div className="container">
                     
-                        <div className="d-flex justify-content-between align-items-center w-100"
-                            // variants={ listVariants }
-                            // initial="hidden"
-                            // animate="visible"
+                        <motion.div className="d-flex justify-content-between align-items-center w-100"
+                            variants={ listVariants }
+                            initial="hidden"
+                            animate="visible"
                             >
                         
-                            <div className="logo"
-                                // variants={ itemVariantsFromUp }
+                            <motion.div className="logo"
+                                variants={ itemVariantsFromUp }
                                 >
                             
-                                <Link className="navbar-brand" onClick={scrollToTop} to="/"><img src={process.env.PUBLIC_URL + logo} width={100} alt="Abdelraouf Halaby logo" /></Link>
+                                <Link className="navbar-brand" onClick={scrollToTop} to="/">
+                                    {/* <img src={process.env.PUBLIC_URL + logo} width={100} alt="Abdelraouf Halaby logo" /> */}
+                                    Abdelraouf Halaby
+                                </Link>
                             
-                            </div>
+                            </motion.div>
                         
                             <div className="collapse navbar-collapse text-end justify-content-end" id="navbarSupportedContent">
                             
                                 <ul className="navbar-nav mb-2 mb-lg-0"
                                     >
                                 
-                                    <li className="nav-item"
-                                        // variants={itemVariantsFromUp}
+                                    <motion.li className="nav-item"
+                                        variants={itemVariantsFromUp}
                                         >
                                     
-                                        <Link className="nav-link" aria-current="page" to="/#brief">brief</Link>
+                                        <Link className="nav-link" aria-current="page" to="/" onClick={() => {
+                                            setTimeout(() => {
+                                                document.getElementById("welcomeSec")?.scrollIntoView({
+                                                    behavior: "smooth",
+                                                });
+                                            }, 0);
+                                        }}>brief</Link>
                                     
-                                    </li>
+                                    </motion.li>
                                 
-                                    <li className="nav-item"
-                                        // variants={itemVariantsFromUp}
+                                    <motion.li className="nav-item"
+                                        variants={itemVariantsFromUp}
                                         >
                                     
                                         <Link className="nav-link" to='/skills'>skills</Link>
                                     
-                                    </li>
+                                    </motion.li>
                                 
-                                    <li className="nav-item"
-                                        // variants={itemVariantsFromUp}
+                                    <motion.li className="nav-item"
+                                        variants={itemVariantsFromUp}
                                         >
                                     
                                         <Link className="nav-link" to="/work">latest projects</Link>
                                     
-                                    </li>
+                                    </motion.li>
                                 
-                                    <li className="nav-item"
-                                        // variants={itemVariantsFromUp}
+                                    <motion.li className="nav-item"
+                                        variants={itemVariantsFromUp}
                                         >
                                     
                                         <Link className="nav-link" to='/contact'>contact</Link>
                                     
-                                    </li>
+                                    </motion.li>
                                 
-                                    <li className="nav-item"
-                                        // variants={itemVariantsFromUp}
+                                    <motion.li className="nav-item"
+                                        variants={itemVariantsFromUp}
                                         >
                                     
                                         <a 
@@ -116,15 +131,28 @@ export default function Header() {
                                             download CV
                                         </a>
                                     
-                                    </li>
+                                    </motion.li>
                                 
                                 </ul>
                             
-                                <div className="theme-switch-wrapper"
-                                    // initial={{ opacity : 0, x : 100 }}
-                                    // animate={{ opacity : 1, x : 0 }}
-                                    // transition={{ duration : 1.6, type: "spring" }}
-                                    >
+                                <motion.div
+                                    className="theme-switch-wrapper"
+                                    initial={{ opacity: 0, x: 100 }}
+                                    animate={{
+                                        opacity: 1,
+                                        x: 0,
+                                        scale: [1, 1.10, 1],
+                                    }}
+                                    transition={{
+                                        opacity: { duration: 1.6 },
+                                        x: { duration: 1.6, type: "spring" },
+                                        scale: {
+                                            duration: 1.2,
+                                            repeat: Infinity,
+                                            ease: "easeInOut",
+                                        },
+                                    }}
+                                >
                                 
                                     <label className="theme">
                                     
@@ -144,11 +172,11 @@ export default function Header() {
                                     
                                     </label>
                                 
-                                </div>
+                                </motion.div>
                             
                             </div>
                         
-                        </div>
+                        </motion.div>
                     
                     </div>
                 

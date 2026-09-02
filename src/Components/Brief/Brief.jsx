@@ -1,7 +1,5 @@
-import React from 'react'
-import PersonalInformation from '../../Apis/PersonalInformation.json'
-import '../Home/_Home.scss'
 import { Link } from 'react-router-dom';
+import PersonalInformation from '../../Apis/PersonalInformation.json'
 
 export default function Brief() {
 
@@ -49,7 +47,7 @@ export default function Brief() {
                                 
                                     <Link to="/navigate" className='smallScreenBtn'>Navigate</Link>
                                 
-                                    <Link to='/contact' className='smallScreenBtn'>Next (Links)</Link>
+                                    <Link to='/experience' className='smallScreenBtn'>Next (Experience)</Link>
                                 
                                 </div>
                             

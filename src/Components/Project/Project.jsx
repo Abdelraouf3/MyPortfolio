@@ -1,8 +1,9 @@
-import React, { useEffect, useState } from 'react'
-import Works from '../../Apis/Works.json'
-import PersonalInformation from '../../Apis/PersonalInformation.json'
-import './_Project.scss'
+import { useEffect, useState } from 'react'
 import { Link, useNavigate, useParams } from 'react-router-dom'
+import { motion } from 'motion/react'
+import { itemVariantsFromDown, listVariants } from '../../animations/variants';
+import Contact from '../Contact/Contact';
+import Works from '../../Apis/Works.json'
 
 export default function Project() {
 
@@ -13,7 +14,6 @@ export default function Project() {
 
     const [lightboxIndex, setLightboxIndex] = useState(null);
 
-    // Close on Escape, navigate with arrow keys
     useEffect(() => {
         const handleKey = (e) => {
             if (lightboxIndex === null) return;
@@ -25,7 +25,6 @@ export default function Project() {
         return () => window.removeEventListener('keydown', handleKey);
     }, [lightboxIndex, item.shots.length]);
 
-    // ✅ Sort by rank to match Home and Work page order
     const sortedWorks = [...Works].sort((a, b) => a.rank - b.rank);
     const currentIndex = sortedWorks.findIndex(w => w.rank === parseInt(rank));
     const prevProject = sortedWorks[currentIndex - 1] || null;
@@ -48,97 +47,110 @@ export default function Project() {
     
     }, [rank, prevProject, nextProject]);
 
-    const { email, phone, whatsappURL, linkedinURL, githubURL } = PersonalInformation[0];
-
-    // ✅ Guard — must be after all hooks
     if (!item) return <div className='section container'>Item not found</div>;
 
     return (
     
         <>
         
-            <section className="viewProject section">
-    
+            <motion.section className="viewProject section"
+                variants={listVariants}
+                initial='hidden'
+                whileInView='visible'
+                viewport={{ once: true }}
+            >
+            
                 <div className="container">
                 
                     <div className="projectDetails">
                     
-                        <div className="image">
-                            <img src={process.env.PUBLIC_URL + item.imageCover2} alt={item.title} />
-                        </div>
+                        <motion.div className="image" variants={itemVariantsFromDown}>
+                            <img src={process.env.PUBLIC_URL + item.imageCover} alt={item.title} />
+                        </motion.div>
                     
-                        {/* ✅ Single status check — no duplication */}
-                        <div className='d-md-flex align-items-center justify-content-between'>
-
-                            <h4 className="title">{item.title}</h4>
+                        <div className='d-flex align-items-center justify-content-between'>
                         
-                            <div className="d-flex justify-content-center gap-2 mb-2">
-
+                            <motion.h4 className="title" variants={itemVariantsFromDown}>{item.title}</motion.h4>
+                        
+                            <div className="d-none d-lg-flex justify-content-center gap-2 mb-2">
+                            
                                 {item.status === "in progress" 
-                                    ? <span className="badge bg-warning text-dark">🚧 Under Development</span>
-                                    : <a target='_blank' rel="noopener noreferrer" href={item.liveDemo} className="demoBtn">
-                                        <i className="fa-solid fa-arrow-up-right-from-square"></i> Live Demo
-                                      </a>
+                                
+                                    ? <motion.span className="badge bg-warning text-dark" variants={itemVariantsFromDown}>🚧 Under Development</motion.span>
+                                
+                                    :   <motion.a target='_blank' rel="noopener noreferrer" href={item.liveDemo} className="demoBtn" variants={itemVariantsFromDown}>
+                                            <i className="fa-solid fa-arrow-up-right-from-square"></i> Live Demo
+                                        </motion.a>
+                                
                                 }
                             
                                 {item.githubURL && (
-                                    <a target='_blank' rel="noopener noreferrer" href={item.githubURL} className="demoBtn">
+                                
+                                    <motion.a target='_blank' rel="noopener noreferrer" href={item.githubURL} className="demoBtn" variants={itemVariantsFromDown}>
                                         <i className="fa-brands fa-github"></i> Source Code
-                                    </a>
+                                    </motion.a>
+                                
                                 )}
-
+                            
+                            </div>
+                        
+                            <div className="d-flex d-lg-none justify-content-center gap-2 mb-2">
+                            
+                                {item.status === "in progress" 
+                                
+                                    ? <motion.span className="badge bg-warning text-dark" variants={itemVariantsFromDown}>🚧</motion.span>
+                                
+                                    :   <motion.a target='_blank' rel="noopener noreferrer" href={item.liveDemo} className="demoBtn" variants={itemVariantsFromDown}>
+                                            <i className="fa-solid fa-arrow-up-right-from-square"></i> 
+                                        </motion.a>
+                                
+                                }
+                            
+                                {item.githubURL && (
+                                
+                                    <motion.a target='_blank' rel="noopener noreferrer" href={item.githubURL} className="demoBtn" variants={itemVariantsFromDown}>
+                                        <i className="fa-brands fa-github"></i>
+                                    </motion.a>
+                                
+                                )}
+                            
                             </div>
                         
                         </div>
                     
-                        <p className="description">{item.description}</p>
+                        <motion.p className="description" variants={itemVariantsFromDown}>{item.description}</motion.p>
                     
-                        <h4 className="technologies">Technologies used: <span>{item.technologies}</span></h4>
+                        <motion.h4 className="technologies" variants={itemVariantsFromDown}>Technologies used: <span>{item.technologies}</span></motion.h4>
                     
                         <div className="shots">
                         
                             <div className="shotTitle">
                             
-                                <h4>shots:</h4>
-
-                                {/* ── Original static shots — kept for reference ──
-                                <div className="imagesGroup">
-                                    <div className="image">
-                                        <img src={process.env.PUBLIC_URL + item.shots[0]} alt={`${item.title}-image`} />
-                                    </div>
-                                    <div className="image">
-                                        <img src={process.env.PUBLIC_URL + item.shots[1]} alt={`${item.title}-image-2`} />
-                                    </div>
-                                    <div className="image">
-                                        <img src={process.env.PUBLIC_URL + item.shots[2]} alt={`${item.title}-image-3`} />
-                                    </div>
-                                </div>
-                                ── End original ── */}
+                                <motion.h4 variants={itemVariantsFromDown}>shots:</motion.h4>
                             
-                                {/* ✅ Dynamic shots with lightbox */}
                                 <div className="imagesGroup">
+                                
                                     {item.shots.map((shot, index) => (
-                                        <div className="image" key={index} onClick={() => setLightboxIndex(index)}>
-                                            <img
-                                                src={process.env.PUBLIC_URL + shot}
-                                                alt={`${item.title}-image-${index + 1}`}
-                                            />
-                                        </div>
+                                    
+                                        <motion.div className="image" key={index} onClick={() => setLightboxIndex(index)} variants={itemVariantsFromDown}>
+                                        
+                                            <img src={process.env.PUBLIC_URL + shot} alt={`${item.title}-image-${index + 1}`} />
+                                        
+                                        </motion.div>
+                                    
                                     ))}
+                                
                                 </div>
+                            
+                                { lightboxIndex !== null && (
                                 
-                                {/* Lightbox */}
-                                {lightboxIndex !== null && (
                                     <div className="lightbox" onClick={() => setLightboxIndex(null)}>
-                                
-                                        {/* Close button */}
+                                    
                                         <button className="lightboxClose" onClick={() => setLightboxIndex(null)}>
                                             <i className="fa-solid fa-xmark"></i>
                                         </button>
-                                
-                                        {/* Left arrow */}
-                                        <button 
-                                            className="lightboxArrow lightboxArrowLeft"
+                                    
+                                        <button className="lightboxArrow lightboxArrowLeft"
                                             onClick={(e) => {
                                                 e.stopPropagation();
                                                 setLightboxIndex(i => (i - 1 + item.shots.length) % item.shots.length);
@@ -146,17 +158,14 @@ export default function Project() {
                                         >
                                             <i className="fa-solid fa-chevron-left"></i>
                                         </button>
-                                
-                                        {/* Image */}
+                                    
                                         <img
                                             src={process.env.PUBLIC_URL + item.shots[lightboxIndex]}
                                             alt="preview"
                                             onClick={(e) => e.stopPropagation()}
                                         />
-                                
-                                        {/* Right arrow */}
-                                        <button
-                                            className="lightboxArrow lightboxArrowRight"
+                                    
+                                        <button className="lightboxArrow lightboxArrowRight"
                                             onClick={(e) => {
                                                 e.stopPropagation();
                                                 setLightboxIndex(i => (i + 1) % item.shots.length);
@@ -164,107 +173,88 @@ export default function Project() {
                                         >
                                             <i className="fa-solid fa-chevron-right"></i>
                                         </button>
-                                
-                                        {/* Dots indicator */}
+                                    
                                         <div className="lightboxDots" onClick={(e) => e.stopPropagation()}>
+                                        
                                             {item.shots.map((_, index) => (
-                                                <span
-                                                    key={index}
-                                                    className={`lightboxDot ${index === lightboxIndex ? 'active' : ''}`}
-                                                    onClick={() => setLightboxIndex(index)}
-                                                />
+                                            
+                                                <span key={index} className={`lightboxDot ${index === lightboxIndex ? 'active' : ''}`} onClick={() => setLightboxIndex(index)} />
+                                            
                                             ))}
+                                        
                                         </div>
-                                
+                                    
                                     </div>
+                                
                                 )}
                             
                             </div>
                         
                         </div>
-
-                        {/* ✅ Prev / Next navigation — sorted by rank */}
-                        <div className="projectNav">
+                    
+                        <motion.div className="projectNav" variants={itemVariantsFromDown}>
                         
                             {prevProject ? (
+                            
                                 <Link to={`/project/${prevProject.rank}`} className="projectNavBtn projectNavBtn--prev">
+                                
                                     <div className="projectNavArrow">
                                         <i className="fa-solid fa-arrow-left"></i>
                                     </div>
+                                    
                                     <div className="projectNavInfo">
+                                    
                                         <span>Previous</span>
+                                    
                                         <h4>{prevProject.title}</h4>
+                                    
                                     </div>
+                                
                                 </Link>
+                            
                             ) : <div />}
                         
                             {nextProject ? (
+                            
                                 <Link to={`/project/${nextProject.rank}`} className="projectNavBtn projectNavBtn--next">
+                                
                                     <div className="projectNavInfo">
+                                    
                                         <span>Next</span>
+                                    
                                         <h4>{nextProject.title}</h4>
+                                    
                                     </div>
+                                
                                     <div className="projectNavArrow">
                                         <i className="fa-solid fa-arrow-right"></i>
                                     </div>
+                                
                                 </Link>
+                            
                             ) : <div />}
                         
-                        </div>
+                        </motion.div>
                     
                     </div>
                 
-                    <div className="text-center d-none d-md-block mt-4">
+                    <motion.div className="text-center d-none d-md-block mt-4" variants={itemVariantsFromDown}>
                         <Link to='/work' className='primaryBtn'>explore all works</Link>
-                    </div>
+                    </motion.div>
                 
-                    <div className="btns d-flex justify-content-center gap-2 d-md-none">
-                        {/* ✅ button instead of Link for back navigation */}
-                        <button onClick={() => navigate(-1)} className='smallScreenBtn'>Back (Projects)</button>
+                    <motion.div className="btns d-flex justify-content-center gap-2 d-md-none" variants={itemVariantsFromDown}>
+                    
+                        <motion.button onClick={() => navigate(-1)} className='smallScreenBtn'>Back (Projects)</motion.button>
+                    
                         <Link to='/navigate' className='smallScreenBtn'>Navigate</Link>
-                    </div>
+                    
+                    </motion.div>
                 
                 </div>
             
-            </section>
+            </motion.section>
         
-            <section className="contact2 section d-md-block d-none">
-                <div className="container">
-                    <div className="infoTitles text-center d-md-block d-none">
-                        <span className="headTitle">contact</span>
-                        <h3 className="subTitle">let's discuss your <span className="changeColor">project</span></h3>
-                        <p className="paragraph">Let's make something new, different and more meaningful or make things move visual or conceptual</p>
-                    </div>
-
-                    <div className="row justify-content-center">
-                        <div className="col-sm-6 col-lg-4">
-                            <div className="box linkedIn">
-                                <a rel="noopener noreferrer" href={linkedinURL}>LinkedIn</a>
-                            </div>
-                        </div>
-                        <div className="col-sm-6 col-lg-4">
-                            <div className="box github">
-                                <a rel="noopener noreferrer" href={githubURL}>Github</a>
-                            </div>
-                        </div>
-                        <div className="col-sm-6 col-lg-4">
-                            <div className="box gmail">
-                                <a href={`mailto:${email}`}>{email}</a>
-                            </div>
-                        </div>
-                        <div className="col-sm-6 col-lg-4">
-                            <div className="box whatsapp">
-                                <a rel="noopener noreferrer" href={whatsappURL}>Whatsapp</a>
-                            </div>
-                        </div>
-                        <div className="col-sm-6 col-lg-4">
-                            <div className="box phone">
-                                <a href={`tel:+${phone}`}>+{phone}</a>
-                            </div>
-                        </div>
-                    </div>
-                </div>
-            </section> 
+            <Contact />
         
         </>
     

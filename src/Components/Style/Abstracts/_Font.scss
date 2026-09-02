@@ -1,39 +1,63 @@
 @font-face {
     font-family: vic-Bold;
-    src: url("../Edu_VIC_WA_NT_Beginner/static/EduVICWANTBeginner-Bold.ttf");
+    src: url("../../../fonts/Edu_VIC_WA_NT_Beginner/static/EduVICWANTBeginner-Bold.ttf");
 }
 
 @font-face {
     font-family: vic-Medium;
-    src: url("../Edu_VIC_WA_NT_Beginner/static/EduVICWANTBeginner-Medium.ttf");
+    src: url("../../../fonts/Edu_VIC_WA_NT_Beginner/static/EduVICWANTBeginner-Medium.ttf");
 }
 
 @font-face {
     font-family: vic-Regular;
-    src: url("../Edu_VIC_WA_NT_Beginner/static/EduVICWANTBeginner-Regular.ttf");
+    src: url("../../../fonts/Edu_VIC_WA_NT_Beginner/static/EduVICWANTBeginner-Regular.ttf");
 }
 
 @font-face {
     font-family: vic-SemiBold;
-    src: url("../Edu_VIC_WA_NT_Beginner/static/EduVICWANTBeginner-SemiBold.ttf");
+    src: url("../../../fonts/Edu_VIC_WA_NT_Beginner/static/EduVICWANTBeginner-SemiBold.ttf");
 }
 
 @font-face {
     font-family: merriWeather-Bold;
-    src: url("../Merriweather/Merriweather-Bold.ttf");
+    src: url("../../../fonts/Merriweather/Merriweather-Bold.ttf");
 }
 
 @font-face {
     font-family: merriWeather-black;
-    src: url("../Merriweather/Merriweather-Black.ttf");
+    src: url("../../../fonts/Merriweather/Merriweather-Black.ttf");
 }
 
 @font-face {
     font-family: merriWeather-Regular;
-    src: url("../Merriweather/Merriweather-Regular.ttf");
+    src: url("../../../fonts/Merriweather/Merriweather-Regular.ttf");
 }
 
 @font-face {
     font-family: merriWeather-light;
-    src: url("../Merriweather/Merriweather-Light.ttf");
+    src: url("../../../fonts/Merriweather/Merriweather-Light.ttf");
+}
+
+@font-face {
+    font-family: "Unbounded";
+    src: url('../../../fonts/Unbounded/Unbounded-VariableFont_wght.woff2') format('woff2');
+    font-weight: 200 900;
+    font-style: normal;
+    font-display: swap;
+}
+
+@font-face {
+    font-family: "Inter";
+    src: url('../../../fonts/Inter/Inter-VariableFont_wght.woff2') format('woff2');
+    font-weight: 200 900;
+    font-style: normal;
+    font-display: swap;
+}
+
+@font-face {
+    font-family: "JetBrains Mono";
+    src: url('../../../fonts/JetBrains_Mono/JetBrainsMono-VariableFont_wght.woff2') format('woff2');
+    font-weight: 200 900;
+    font-style: normal;
+    font-display: swap;
 }

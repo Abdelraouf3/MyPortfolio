@@ -1,18 +1,20 @@
-import React, { useEffect, useRef } from 'react'
+import { useEffect, useRef } from 'react'
 import { Link, useLocation } from 'react-router-dom'
 import { motion } from 'motion/react'
-import { Splide, SplideSlide } from '@splidejs/react-splide';
-import '@splidejs/splide/css'; 
-import { listVariants, itemVariantsFromDown, itemVariantsFromUp, itemVariantsFromLeft, itemVariantsFromRight } from '../../animations/variants'
+import { listVariants, itemVariantsFromDown, itemVariantsFromRight } from '../../animations/variants'
+import Contact from '../Contact/Contact';
+import Skills from '../Skills/Skills';
 import PersonalInformation from '../../Apis/PersonalInformation.json'
 import Works from '../../Apis/Works.json'
-import './_Home.scss'
+import '@splidejs/splide/css'; 
 
 export default function Home() {
 
     const sorted = [...Works].sort((a, b) => a.rank - b.rank).slice(0, 6)
 
-    const { name, email, phone, profileImg, title, brief, smallBrief, whatsappURL, linkedinURL, githubURL, skills, skillsName } = PersonalInformation[0];
+    const { name, email, phone, profileImg, title, brief, whatsappURL, linkedinURL, githubURL } = PersonalInformation[0];
+
+    const { skills, skillsName } = PersonalInformation[0];
 
     const { hash } = useLocation();
     const sectionARef = useRef(null);
@@ -27,12 +29,11 @@ export default function Home() {
         }
     }, [hash]);
 
-    // To make first section take margin top 
     useEffect(() => {
+    
         const sections = document.querySelectorAll('section');
         let firstVisibleSection = null;
     
-        // Loop through sections to find the first visible one
         sections.forEach((section) => {
             const isHidden = window.getComputedStyle(section).display === 'none';
             if (!isHidden && !firstVisibleSection) {
@@ -40,16 +41,20 @@ export default function Home() {
             }
         });
         
-            // Apply margin to the first visible section
-            if (firstVisibleSection) {
-            firstVisibleSection.style.paddingTop = '100px';
-            }
-        }, []);
+        if (firstVisibleSection) {
+        firstVisibleSection.style.paddingTop = '100px';
+        }
+    }, []);
 
     return (
         <>
         
-            <section className="welcome2 section d-none d-md-block">
+            <motion.section className="welcomeSec section d-none d-md-block" id='welcomeSec'
+                variants={listVariants}
+                initial='hidden'
+                whileInView='visible'
+                viewport={{ once: true }}
+            >
             
                 <div className="container h-100">
                 
@@ -57,39 +62,35 @@ export default function Home() {
                     
                         <div className="col-md-6">
                 
-                            <div className="personalInformation"
-                                // variants={listVariants}
-                                // initial='hidden'
-                                // animate='visible'
-                                >
+                            <div className="personalInformation">
                             
-                                <span className="title"
-                                    // variants={itemVariantsFromDown}
+                                <motion.span className="title"
+                                    variants={itemVariantsFromDown}
                                     >
                                     {title}
-                                </span>
+                                </motion.span>
                             
-                                <h4 className="name" 
-                                    // variants={itemVariantsFromDown}
+                                <motion.h4 className="name" 
+                                    variants={itemVariantsFromDown}
                                 >
                                     {name}
-                                </h4>
+                                </motion.h4>
                             
-                                <p className="brief"
-                                    // variants={itemVariantsFromDown}
+                                <motion.p className="brief"
+                                    variants={itemVariantsFromDown}
                                 >
                                     {brief}
-                                </p>
+                                </motion.p>
                             
-                                <div className="d-flex align-items-center gap-3"
-                                    // variants={itemVariantsFromDown}
+                                <motion.div className="d-flex align-items-center gap-3"
+                                    variants={itemVariantsFromDown}
                                     >
                                 
                                     <Link to="/work" className='primaryBtn'>explore projects</Link>
                                 
                                     <a target='_blank' rel="noopener noreferrer" href={whatsappURL} className='secondBtn'>contact me <i className="fa-solid fa-arrow-right-long"></i></a>
                                 
-                                </div>
+                                </motion.div>
                             
                             </div>
                         
@@ -101,57 +102,51 @@ export default function Home() {
                             
                                 <div className="image text-center">
                                 
-                                    <span className='beforeImage'
-                                    // animate={{
-                                    //     scale: [0, 1.1, 1.1, 1, 1],
-                                    //     rotate: [0, 0, 180, 180, 0],
-                                    //     borderRadius: ["0%", "0%", "50%", "50%", "50%"],
-                                    // }}
-                                    // transition={{
-                                    //     duration: 2,
-                                    //     ease: "easeInOut",
-                                    //     times: [0, 0.2, 0.5, 0.8, 1],
-                                    // }}
-                                    ></span>
+                                    <motion.span className='beforeImage'
+                                    animate={{
+                                        scale: [0, 1.1, 1.1, 1, 1],
+                                        rotate: [0, 0, 180, 180, 0],
+                                    }}
+                                    transition={{
+                                        duration: 2,
+                                        ease: "easeInOut",
+                                        times: [0, 0.2, 0.5, 0.8, 1],
+                                    }}
+                                    ></motion.span>
                                 
                                     <img src={process.env.PUBLIC_URL + profileImg}  alt="Personal-image" loading='lazy' />
                                 
-                                    <div className="followSocial d-flex align-items-center"
-                                        // variants={listVariants}
-                                        // initial={'hidden'}
-                                        // animate={'visible'}
-                                    >
+                                    <div className="followSocial d-flex align-items-center">
                                 
-                                        <h4 
-                                            // variants={itemVariantsFromRight}
-                                        >Follow me on: </h4>
+                                        <motion.h4 
+                                            variants={itemVariantsFromRight}
+                                        >Follow me on: </motion.h4>
                                     
-                                        <div className="social d-flex gap-4 align-items-center" 
-                                            // variants={itemVariantsFromRight}
+                                        <motion.div className="social d-flex gap-4 align-items-center" 
+                                            variants={itemVariantsFromRight}
                                             >
                                         
                                             <a target='_blank' rel="noopener noreferrer" href={githubURL}><i className="fa-brands fa-github"></i></a>
                                         
                                             <a target='_blank' rel="noopener noreferrer" href={linkedinURL}><i className="fa-brands fa-linkedin-in"></i></a>
                                         
-                                        </div>
+                                        </motion.div>
                                     
                                     </div>
                                 
-                                    <span className="afterImage"
-                                        // animate={{
-                                        //     scale: [0, 1.1, 1, 1.1, 1],
-                                        //     translateX: ["-300%", "0%"],
-                                        //     rotate: [-360, 0],
-                                        //     // borderRadius: ["0%", "0%", "50%", "50%", "0%"],
-                                        // }}
-                                        // transition={{
-                                        //     duration: 2,
-                                        //     ease: "easeInOut",
-                                        //     times: [0, 0.2, 0.5, 0.8, 1],
-                                        // }}
+                                    <motion.span className="afterImage"
+                                        animate={{
+                                            scale: [0, 1.1, 1, 1.1, 1],
+                                            translateX: ["-300%", "0%"],
+                                            rotate: [-360, 0],
+                                        }}
+                                        transition={{
+                                            duration: 2,
+                                            ease: "easeInOut",
+                                            times: [0, 0.2, 0.5, 0.8, 1],
+                                        }}
                                         >
-                                    </span>
+                                    </motion.span>
                                 
                                 </div>
                             
@@ -181,144 +176,80 @@ export default function Home() {
                 
                 </div>
             
-            </section>
+            </motion.section>
         
-            {/* <motion.section className="brief section d-none d-lg-block" ref={sectionARef} id='brief'
+            <motion.section className="skills section d-md-block d-none"
                 variants={listVariants}
                 initial='hidden'
-                whileInView="visible"
+                whileInView='visible'
+                viewport={{ once: true }}
             >
-            
+                
                 <div className="container">
                 
-                    <div className="row justify-content-between align-items-center">
+                    <div className="infoTitles infoTitles2 d-md-block d-none">
                     
-                        <div className="col-lg-3">
-                        
-                            <motion.div className="left"
-                                variants={itemVariantsFromLeft}
-                            ></motion.div>
-                        
-                        </div>
+                        <motion.span className="headTitle" variants={itemVariantsFromDown}>my skills</motion.span>
                     
-                        <div className="col-lg-8 h-100">
-                        
-                            <div className="personalInformation">
-                            
-                                <motion.span className="title"
-                                    variants={itemVariantsFromUp}
-                                >
-                                    {title}
-                                </motion.span>
-                                
-                                <motion.h4 className="name" 
-                                    variants={itemVariantsFromUp}
-                                >
-                                    {name}
-                                </motion.h4>
-                            
-                                <motion.p className="brief"
-                                    variants={itemVariantsFromDown}>
-                                    {brief}
-                                </motion.p>
-                            
-                                <motion.div variants={itemVariantsFromDown}>
-                                
-                                    <Link to="/work" className='primaryBtn'>explore projects</Link>
-                                
-                                </motion.div>
-                            
-                            </div>
-                        
-                        </div>
+                        <motion.h3 className="subTitle" variants={itemVariantsFromDown}>Why hire me for your <span className="changeColor">project?</span> </motion.h3>
                     
-                        <div className="col-lg-1 d-lg-flex justify-content-end">
+                        <motion.p className="paragraph" variants={itemVariantsFromDown}>I create engaging and responsive user interfaces that enhance user experience and meet business objectives.</motion.p>
+                    
+                        <motion.div className="btns" variants={itemVariantsFromDown}>
                         
-                            <div className="slider">
-                            
-                                <motion.div className="dotOne dot" variants={itemVariantsFromUp}></motion.div>
-                            
-                                <div className="dotTwo dot"></div>
-                            
-                                <motion.div className="dotThree dot" variants={itemVariantsFromDown}></motion.div>
-                            
-                            </div>
+                            <Link to='/contact' className='primaryBtn'>hire me</Link>
                         
-                        </div>
+                        </motion.div>
                     
                     </div>
                 
-                </div>
-            
-            </motion.section> */}
-        
-            <section className="skills section d-md-block d-none">
-            
-                <div className="container">
+                    <div className="boxShadow d-md-none d-block">
+                    
+                        <motion.span className="title" variants={itemVariantsFromDown}>skills</motion.span>
+                    
+                    </div>
                 
                     <div className="row justify-content-center align-items-center">
                     
-                        <div className="col-lg-4">
-                        
-                            <div className="infoTitles">
-                        
-                                <span className="headTitle">my skills</span>
-                            
-                                <h3 className="subTitle">Why hire me for your <span className="changeColor">project?</span> </h3>
-                            
-                                <p className="paragraph">I create engaging and responsive user interfaces that enhance user experience and meet business objectives.</p>
-                            
-                                <div className="btns">
+                        {skills.map( (skill, index) =>  (
                                 
-                                    <Link to='/contact' className='primaryBtn'>hire me</Link>
-                                
-                                </div>
-                            
-                            </div>
+                                <motion.div className="col-md-6 col-lg-3" key={`${skill}-${index}`} variants={itemVariantsFromDown}>
                         
-                        </div>
-                    
-                        <div className="col-lg-8">
-                        
-                            <div className="row justify-content-center align-items-center">
-                            
-                                {skills.map( (skill, index) =>  (
+                                    <div className="box skillsBox text-center">
                                     
-                                    <div className="col-md-6 col-lg-3" key={`${skill}-${index}`}>
-                                    
-                                        <div className="box skillsBox text-center">
+                                        <div className="image">
                                         
-                                            <div className="image">
-                                            
-                                                <img src={process.env.PUBLIC_URL + skill} alt={skillsName[index]} loading='lazy' />
-                                            
-                                            </div>
-                                        
-                                            <h4 className='personalSkill'>{skillsName[index]}</h4>
+                                            <img src={process.env.PUBLIC_URL + skill} alt={skillsName[index]} />
                                         
                                         </div>
                                     
+                                        <h4 className='personalSkill'>{skillsName[index]}</h4>
+                                    
                                     </div>
                                 
-                                ) )}
+                                </motion.div>
                             
-                            </div>
-                        
-                        </div>
+                            ) )}
                     
                     </div>
                 
                 </div>
-            
-            </section>
+                
+            </motion.section>
         
-            <section className="experience section d-md-block d-none">
+            <motion.section className="experience section d-md-block d-none"
+                variants={listVariants}
+                initial='hidden'
+                whileInView='visible'
+                viewport={{ once: true }}
+            >
             
                 <div className="container">
                 
                     <div className="infoTitles">
                     
-                        <h2 className="subTitle text-center">My Work <span className="changeColor">Experience</span></h2>
+                        <motion.h2 className="subTitle text-center"
+                            variants={itemVariantsFromDown}>My Work <span className="changeColor">Experience</span></motion.h2>
                     
                     </div>
                 
@@ -328,9 +259,9 @@ export default function Home() {
                         
                             <div className="col-5 text-end pe-4">
                             
-                                <h5 className="fw-bold mb-1">Up Arrow Partners</h5>
+                                <motion.h5 className="fw-bold mb-1" variants={itemVariantsFromDown}>Up Arrow Partners</motion.h5>
                             
-                                <span className="small">April 2026 - June 2026  </span>
+                                <motion.span className="small" variants={itemVariantsFromDown}>April 2026 - June 2026  </motion.span>
                             
                             </div>
                         
@@ -342,45 +273,45 @@ export default function Home() {
                         
                             <div className="col-5 ps-4">
                             
-                                <h5 className="fw-bold text-dark-blue mb-2">Frontend Developer & QA</h5>
+                                <motion.h5 className="fw-bold text-dark-blue mb-2" variants={itemVariantsFromDown}>Frontend Developer & QA</motion.h5>
                             
                                 <ul>
                                 
-                                    <li>
+                                    <motion.li variants={itemVariantsFromDown}>
                                     
                                         <p className="small mb-0 lh-base">
                                             Debugged and resolved 15+ frontend issues across React components, improving 
                                                 application stability and reducing UI errors by ~30% during testing. 
                                         </p>
                                     
-                                    </li>
+                                    </motion.li>
                                 
-                                    <li>
+                                    <motion.li variants={itemVariantsFromDown}>
                                     
                                         <p className="small mb-0 lh-base">
                                             Identified and optimized 3 rendering bottlenecks in rendering logic, improving perceived 
                                                 load performance by ~25% and UI responsiveness.  
                                         </p>
                                     
-                                    </li>
+                                    </motion.li>
                                 
-                                    <li>
+                                    <motion.li variants={itemVariantsFromDown}>
                                     
                                         <p className="small mb-0 lh-base">
                                             Improved SEO structure across 10+ key pages by updating meta tags, page structure, and 
                                                 indexing readiness for key pages. 
                                         </p>
                                     
-                                    </li>
+                                    </motion.li>
                                 
-                                    <li>
+                                    <motion.li variants={itemVariantsFromDown}>
                                     
                                         <p className="small mb-0 lh-base">
                                             Collaborated with a team of 3-4 developers to fix UI inconsistencies across 10+ 
                                                 components, enhancing overall user experience.
                                         </p>
                                     
-                                    </li>
+                                    </motion.li>
                                 
                                 </ul>
                             
@@ -392,9 +323,9 @@ export default function Home() {
                         
                             <div className="col-5 text-end pe-4">
                             
-                                <h5 className="fw-bold mb-1">Egyptian Armed Forces</h5>
+                                <motion.h5 className="fw-bold mb-1" variants={itemVariantsFromDown}>Egyptian Armed Forces</motion.h5>
                             
-                                <span className="small">Jan 2025 – March 2026  </span>
+                                <motion.span className="small" variants={itemVariantsFromDown}>Jan 2025 – March 2026  </motion.span>
                             
                             </div>
                         
@@ -406,7 +337,7 @@ export default function Home() {
                         
                             <div className="col-5 ps-4">
                             
-                                <h5 className="fw-bold text-dark-blue mb-2">Military Service</h5>
+                                <motion.h5 className="fw-bold text-dark-blue mb-2" variants={itemVariantsFromDown}>Military Service</motion.h5>
                             
                                 {/* <span className="small">Jan 2025 – March 2026  </span> */}
                             
@@ -418,9 +349,9 @@ export default function Home() {
                         
                             <div className="col-5 text-end pe-4">
                             
-                                <h5 className="fw-bold text-dark-blue mb-1">Taw3ya</h5>
+                                <motion.h5 className="fw-bold text-dark-blue mb-1" variants={itemVariantsFromDown}>Taw3ya</motion.h5>
                             
-                                <span className="small">July 2024 - Jan 2025</span>
+                                <motion.span className="small" variants={itemVariantsFromDown}>July 2024 - Jan 2025</motion.span>
                             
                             </div>
                         
@@ -432,11 +363,11 @@ export default function Home() {
                         
                             <div className="col-5 ps-4">
                             
-                                <h5 className="fw-bold text-dark-blue mb-2">Frontend Developer</h5>
+                                <motion.h5 className="fw-bold text-dark-blue mb-2" variants={itemVariantsFromDown}>Frontend Developer</motion.h5>
                             
                                 <ul>
                                 
-                                    <li>
+                                    <motion.li variants={itemVariantsFromDown}>
                                     
                                         <p className="small mb-0 lh-base">
                                         
@@ -446,9 +377,9 @@ export default function Home() {
                                         
                                         </p>
                                     
-                                    </li>
+                                    </motion.li>
                                 
-                                    <li>
+                                    <motion.li variants={itemVariantsFromDown}>
                                     
                                         <p className="small mb-0 lh-base">
                                         
@@ -457,9 +388,9 @@ export default function Home() {
                                         
                                         </p>
                                     
-                                    </li>
+                                    </motion.li>
                                 
-                                    <li>
+                                    <motion.li variants={itemVariantsFromDown}>
                                     
                                         <p className="small mb-0 lh-base">
                                         
@@ -468,7 +399,7 @@ export default function Home() {
                                         
                                         </p>
                                     
-                                    </li>
+                                    </motion.li>
                                 
                                 </ul>
                             
@@ -480,9 +411,9 @@ export default function Home() {
                         
                             <div className="col-5 text-end pe-4">
                             
-                                <h5 className="fw-bold text-dark-blue mb-1">Master Web</h5>
+                                <motion.h5 className="fw-bold text-dark-blue mb-1" variants={itemVariantsFromDown}>Master Web</motion.h5>
                             
-                                <span className="small">Nov 2024 - Jan 2025</span>
+                                <motion.span className="small" variants={itemVariantsFromDown}>Nov 2024 - Jan 2025</motion.span>
                             
                             </div>
                         
@@ -494,11 +425,11 @@ export default function Home() {
                         
                             <div className="col-5 ps-4">
                             
-                                <h5 className="fw-bold text-dark-blue mb-2">Frontend Developer Intern</h5>
+                                <motion.h5 className="fw-bold text-dark-blue mb-2" variants={itemVariantsFromDown}>Frontend Developer Intern</motion.h5>
                             
                                 <ul>
                                 
-                                    <li>
+                                    <motion.li variants={itemVariantsFromDown}>
                                     
                                         <p className="small mb-0 lh-base">
                                         
@@ -507,9 +438,9 @@ export default function Home() {
                                         
                                         </p>
                                     
-                                    </li>
+                                    </motion.li>
                                 
-                                    <li>
+                                    <motion.li variants={itemVariantsFromDown}>
                                     
                                         <p className="small mb-0 lh-base">
                                         
@@ -518,9 +449,9 @@ export default function Home() {
                                         
                                         </p>
                                     
-                                    </li>
+                                    </motion.li>
                                 
-                                    <li>
+                                    <motion.li variants={itemVariantsFromDown}>
                                     
                                         <p className="small mb-0 lh-base">
                                         
@@ -529,7 +460,7 @@ export default function Home() {
                                         
                                         </p>
                                     
-                                    </li>
+                                    </motion.li>
                                 
                                 </ul>
                             
@@ -541,25 +472,24 @@ export default function Home() {
                 
                 </div>
             
-            </section>
+            </motion.section>
         
-            <section className="work section d-md-block d-none" ref={sectionBRef} id='work'>
+            <motion.section className="work section d-md-block d-none" ref={sectionBRef} id='work'
+                variants={listVariants}
+                initial='hidden'
+                whileInView='visible'
+                viewport={{ once: true }}
+            >
             
                 <div className="container">
                 
                     <div className="infoTitles">
                         
-                        <span className="headTitle">Works</span>
+                        <motion.span className="headTitle" variants={itemVariantsFromRight}>Works</motion.span>
                     
-                        <h3 className="subTitle">My creative works latest <span className="changeColor">projects</span> </h3>
+                        <motion.h3 className="subTitle" variants={itemVariantsFromDown}>My creative works latest <span className="changeColor">projects</span> </motion.h3>
                     
-                        <p className="paragraph">I have selected and mentioned here some of my latest projects to share with you.</p>
-                    
-                        {/* <div className="btns">
-                        
-                            <Link to='/work' className='primaryBtn'>show more</Link>
-                        
-                        </div> */}
+                        <motion.p className="paragraph" variants={itemVariantsFromDown}>I have selected and mentioned here some of my latest projects to share with you.</motion.p>
                     
                     </div>
                 
@@ -567,7 +497,7 @@ export default function Home() {
                     
                         {sorted.map((work) => (
                     
-                            <div className="col-md-6 col-lg-4 mb-4" key={work.id}>
+                            <motion.div className="col-md-6 col-lg-4 mb-4" key={work.id} variants={itemVariantsFromDown}>
                     
                                 <div className="project">
                     
@@ -576,7 +506,7 @@ export default function Home() {
                                         <div className="image">
                     
                                             <img
-                                                src={process.env.PUBLIC_URL + work.imageCover2}
+                                                src={process.env.PUBLIC_URL + work.imageCover}
                                                 alt={`${work.title}-image`}
                                                 loading='lazy'
                                             />
@@ -662,68 +592,88 @@ export default function Home() {
                     
                                 </div>
                     
-                            </div>
+                            </motion.div>
                     
                         ))}
                     
                     </div>
                 
-                            <div className="text-center d-none d-md-block mt-3">
-                                
-                                    <Link to='/work' className='primaryBtn'>explore all works</Link>
-                                
-                            </div>
+                    <motion.div className="text-center d-none d-md-block mt-3" variants={itemVariantsFromDown}>
+                    
+                        <Link to='/work' className='primaryBtn'>explore all works</Link>
+                    
+                    </motion.div>
                 
                 </div>
         
-            </section>
+            </motion.section>
         
-            <section className="contact2 section d-md-block d-none">
+            <motion.section className="contact2 section d-md-block d-none"
+                variants={listVariants}
+                initial='hidden'
+                whileInView='visible'
+                viewport={{ once: true }}
+            >
+            
                 <div className="container">
+                
                     <div className="infoTitles text-center d-md-block d-none">
-                        <span className="headTitle">contact</span>
-                        <h3 className="subTitle">let's discuss your <span className="changeColor">project</span></h3>
-                        <p className="paragraph">Let's make something new, different and more meaningful or make things move visual or conceptual</p>
+                    
+                        <motion.span className="headTitle" variants={itemVariantsFromDown}>contact</motion.span>
+                    
+                        <motion.h3 className="subTitle" variants={itemVariantsFromDown}>let's discuss your <span className="changeColor">project</span></motion.h3>
+                    
+                        <motion.p className="paragraph" variants={itemVariantsFromDown}>Let's make something new, different and more meaningful or make things move visual or conceptual</motion.p>
+                    
                     </div>
-
+                
                     <div className="row justify-content-center">
+                    
                         <div className="col-sm-6 col-lg-4">
-                            <div className="box linkedIn">
+                        
+                            <motion.div className="box linkedIn" variants={itemVariantsFromDown}>
                                 <a target='_blank' rel="noopener noreferrer" href={linkedinURL}>LinkedIn</a>
-                            </div>
+                            </motion.div>
+                        
                         </div>
-
+                    
                         <div className="col-sm-6 col-lg-4">
-                            <div className="box github">
+                        
+                            <motion.div className="box github" variants={itemVariantsFromDown}>
                                 <a target='_blank' rel="noopener noreferrer" href={githubURL}>Github</a>
-                            </div>
+                            </motion.div>
+                        
                         </div>
-
+                    
                         <div className="col-sm-6 col-lg-4">
-                            <div className="box gmail">
+                        
+                            <motion.div className="box gmail" variants={itemVariantsFromDown}>
                                 <a target='_blank' rel="noopener noreferrer" href={`mailto:${email}`}>{email}</a>
-                            </div>
+                            </motion.div>
+                        
                         </div>
-
+                    
                         <div className="col-sm-6 col-lg-4">
-                            <div className="box whatsapp">
+                        
+                            <motion.div className="box whatsapp" variants={itemVariantsFromDown}>
                                 <a target='_blank' rel="noopener noreferrer" href={whatsappURL}>Whatsapp</a>
-                            </div>
+                            </motion.div>
+                        
                         </div>
-
+                    
                         <div className="col-sm-6 col-lg-4">
-                            <div className="box phone">
+                        
+                            <motion.div className="box phone" variants={itemVariantsFromDown}>
                                 <a target='_blank' rel="noopener noreferrer" href={`tel:+${phone}`}>+{phone}</a>
-                            </div>
+                            </motion.div>
+                        
                         </div>
+                    
                     </div>
-
-                    <div className="btns d-flex justify-content-center gap-2 d-md-none">
-                        <Link to='/info' className='smallScreenBtn'>Back (Info)</Link>
-                        <Link to='/skills' className='smallScreenBtn'>Next (Skills)</Link>
-                    </div>
+                
                 </div>
-            </section> 
+            
+            </motion.section>
         
             <section className="welcomeScreen section d-sm-block d-md-none">
             

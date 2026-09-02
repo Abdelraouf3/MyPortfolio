@@ -1,7 +1,7 @@
-import React from 'react'
-import PersonalInformation from '../../Apis/PersonalInformation.json'
 import { Link } from 'react-router-dom'
-import '../Home/_Home.scss'
+import { motion } from 'motion/react'
+import PersonalInformation from '../../Apis/PersonalInformation.json'
+import { itemVariantsFromDown, listVariants } from '../../animations/variants';
 
 export default function Skills() {
 
@@ -11,29 +11,34 @@ export default function Skills() {
     
         <>
         
-            <section className="skills section">
+            <motion.section className="skills section"
+                variants={listVariants}
+                initial='hidden'
+                whileInView='visible'
+                viewport={{ once: true }}
+            >
                 
                 <div className="container">
                 
                     <div className="infoTitles infoTitles2 d-md-block d-none">
                     
-                        <span className="headTitle">my skills</span>
+                        <motion.span className="headTitle" variants={itemVariantsFromDown}>my skills</motion.span>
                     
-                        <h3 className="subTitle">Why hire me for your <span className="changeColor">project?</span> </h3>
+                        <motion.h3 className="subTitle" variants={itemVariantsFromDown}>Why hire me for your <span className="changeColor">project?</span> </motion.h3>
                     
-                        <p className="paragraph">I create engaging and responsive user interfaces that enhance user experience and meet business objectives.</p>
+                        <motion.p className="paragraph" variants={itemVariantsFromDown}>I create engaging and responsive user interfaces that enhance user experience and meet business objectives.</motion.p>
                     
-                        <div className="btns">
+                        <motion.div className="btns" variants={itemVariantsFromDown}>
                         
                             <Link to='/contact' className='primaryBtn'>hire me</Link>
                         
-                        </div>
+                        </motion.div>
                     
                     </div>
                 
                     <div className="boxShadow d-md-none d-block">
 
-                        <span className="title">skills</span>
+                        <motion.span className="title" variants={itemVariantsFromDown}>skills</motion.span>
 
                     </div>
                 
@@ -41,7 +46,7 @@ export default function Skills() {
                     
                         {skills.map( (skill, index) =>  (
                                 
-                                <div className="col-md-6 col-lg-3" key={`${skill}-${index}`}>
+                                <motion.div className="col-md-6 col-lg-3" key={`${skill}-${index}`} variants={itemVariantsFromDown}>
                         
                                     <div className="box skillsBox text-center">
                                     
@@ -55,7 +60,7 @@ export default function Skills() {
                                     
                                     </div>
                                 
-                                </div>
+                                </motion.div>
                             
                             ) )}
                     
@@ -71,7 +76,7 @@ export default function Skills() {
                 
                 </div>
                 
-            </section>
+            </motion.section>
         
         </>
     

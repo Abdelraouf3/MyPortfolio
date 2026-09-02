@@ -1,4 +1,3 @@
-import React from 'react'
 import { Link } from 'react-router-dom'
 
 export default function Navigate() {
@@ -21,21 +20,27 @@ export default function Navigate() {
                     <div className="linkShadow">
                     
                         <Link to='/info'>info</Link>
-                
-                    </div>
                     
+                    </div>
+                
+                    <div className="linkShadow">
+                    
+                        <Link to='/experience'>experience</Link>
+                    
+                    </div>
+                
                     <div className="linkShadow">
                     
                         <Link to='/contact'>links/contacts</Link>
                     
                     </div>
-                    
+                
                     <div className="linkShadow">
                         
                         <Link to='/skills'>skills</Link>
                     
                     </div>
-                    
+                
                     <div className="linkShadow">
                         
                         <Link to='/work'>projects</Link>
