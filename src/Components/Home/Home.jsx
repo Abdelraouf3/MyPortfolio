@@ -253,6 +253,8 @@ export default function Home() {
                 
                     <div className="timeline">
                     
+                        <span className='line'></span>
+                    
                         <div className="row timeline-item align-items-start">
                         
                             <div className="col-5 text-end pe-4">
