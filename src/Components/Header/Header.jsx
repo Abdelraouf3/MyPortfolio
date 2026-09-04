@@ -83,13 +83,13 @@ export default function Header() {
                                         variants={itemVariantsFromUp}
                                         >
                                     
-                                        <Link className="nav-link" aria-current="page" to="/" onClick={() => {
+                                        <Link className="nav-link" aria-current="page" to="/#experience" onClick={() => {
                                             setTimeout(() => {
-                                                document.getElementById("welcomeSec")?.scrollIntoView({
+                                                document.getElementById("experience")?.scrollIntoView({
                                                     behavior: "smooth",
                                                 });
                                             }, 0);
-                                        }}>brief</Link>
+                                        }}>experience</Link>
                                     
                                     </motion.li>
                                 

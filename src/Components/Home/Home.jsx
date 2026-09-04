@@ -235,7 +235,7 @@ export default function Home() {
                 
             </motion.section>
         
-            <motion.section className="experience section d-md-block d-none"
+            <motion.section className="experience section d-md-block d-none" id='experience'
                 variants={listVariants}
                 initial='hidden'
                 whileInView='visible'

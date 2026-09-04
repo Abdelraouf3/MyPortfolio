@@ -73,7 +73,7 @@ export default function Contact() {
                     
                     </div>
                 
-                    <div className="btns d-flex justify-content-center gap-2">
+                    <div className="btns d-flex d-md-none justify-content-center gap-2">
                     
                         <Link to='/info' className='smallScreenBtn'>Back (Info)</Link>
                     

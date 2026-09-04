@@ -96,6 +96,7 @@ img {
 .theme-switch-wrapper {
     position: fixed;
     top: 50%;
+    // bottom: 30px;
     right: 20px;
     transform: translateY(-50%);
     z-index: 9999;
@@ -155,5 +156,13 @@ img {
     &:active {
         box-shadow: 0 0 var(--main-color);
         transform: translate(3px, 3px);
+    }
+}
+
+@media (max-width: 500px) {
+    .theme-switch-wrapper {
+        top: auto;
+        bottom: 5%;
+        right: 35px;
     }
 }
