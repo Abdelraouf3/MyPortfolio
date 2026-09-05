@@ -501,7 +501,7 @@ export default function Home() {
                     
                                 <div className="project">
                     
-                                    <Link to={`/project/${work.id}`} className="view">
+                                    <Link to={`/project/${work.rank}`} className="view">
                     
                                         <div className="image">
                     
@@ -519,7 +519,7 @@ export default function Home() {
                                     
                                         <div className="d-flex justify-content-between align-items-center gap-2">
                                         
-                                            <Link to={`/project/${work.id}`} className="view">
+                                            <Link to={`/project/${work.rank}`} className="view">
                             
                                                 <h4 className="title">
                                                     {work.title}
@@ -555,7 +555,7 @@ export default function Home() {
                         
                                             { work.liveDemo.length <= 0 ? 
                                             
-                                                <Link to={`/project/${work.id}`} rel="noreferrer" className="primaryBtn">
+                                                <Link to={`/project/${work.rank}`} rel="noreferrer" className="primaryBtn">
                                 
                                                     View Project Details
                                 
