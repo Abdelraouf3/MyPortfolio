@@ -135,12 +135,12 @@
         "title": "Free Movies Online",
         "category": "React Projects",
         "description": "A movie streaming web application built with ReactJS, SCSS, Bootstrap, and Axios. Fetches real-time movie and TV show data from an external API, featuring a dynamic homepage, category browsing, and smooth carousels using Splide.js.",
-        "technologies": "ReactJs, Redux Toolkit, TypeScript, React Redux, Axios, API, SplideJs, Tailwind, HTML5, CSS3, Font Awesome",
+        "technologies": "ReactJs, TypeScript, Axios, API, Framer Motion, Tailwind, HTML5, CSS3, Font Awesome",
         "imageCover": "/ProjectsImages/movie/Frame.png",
         "shots": ["/ProjectsImages/movie/shot-1.png","/ProjectsImages/movie/shot-2.png","/ProjectsImages/movie/shot-3.png"],
-        "liveDemo": "",
-        "githubURL": "",
-        "status": "in progress"
+        "liveDemo": "https://movie-app-a.vercel.app/",
+        "githubURL": "https://github.com/Abdelraouf3/movie-app",
+        "status": "live"
     },
     {
         "id": 10,
