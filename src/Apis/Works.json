@@ -14,7 +14,7 @@
     },
     {
         "id": 2,
-        "rank": 6,
+        "rank": 7,
         "title": "Create Your Website - Landing Page",
         "category": "React Projects",
         "description": "A responsive landing page for a website builder platform, built with ReactJS, SCSS, and Bootstrap. Features smooth UI sections including hero, features, pricing, and testimonials, with clean component-based architecture.",
@@ -66,7 +66,7 @@
     },
     {
         "id": 4,
-        "rank": 7,
+        "rank": 6,
         "title": "Travel & explore",
         "category": "HTML & CSS",
         "description": "A travel inspiration website built with HTML5, CSS3, and Bootstrap. Showcases destinations with rich visuals, travel guides, and activity highlights, featuring smooth scroll animations and a fully responsive layout.",
