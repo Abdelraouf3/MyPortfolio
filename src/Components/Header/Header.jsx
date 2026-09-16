@@ -36,6 +36,16 @@ export default function Header() {
         }
     }
 
+    const [showToast, setShowToast] = useState(true);
+
+    useEffect(() => {
+        const timer = setTimeout(() => {
+            setShowToast(false);
+        }, 6000);
+
+        return () => clearTimeout(timer);
+    }, []);
+
     useEffect(() => {
         window.addEventListener('scroll', changeNavbarColor)
         return () => window.removeEventListener('scroll', changeNavbarColor)
@@ -46,6 +56,8 @@ export default function Header() {
     };
 
     // const { logo } = PersonalInformation[0];
+
+    // if (!showToast) return null;
 
     return (
     
@@ -123,8 +135,8 @@ export default function Header() {
                                     
                                         <a 
                                             className="nav-link" 
-                                            href={process.env.PUBLIC_URL + '/CV/Abdulraouf Halaby - Junior Frontend Developer.pdf'} 
-                                            download="Abdulraouf Halaby - Junior Frontend Developer.pdf"
+                                            href={process.env.PUBLIC_URL + '/CV/Abdulraouf Halaby - Frontend Developer.pdf'} 
+                                            download="Abdulraouf Halaby - Frontend Developer.pdf"
                                             target="_blank"
                                             rel="noopener noreferrer"
                                         >
@@ -173,6 +185,65 @@ export default function Header() {
                                     </label>
                                 
                                 </motion.div>
+                            
+                                {showToast && (
+                                    <motion.div
+                                        className="toastBox"
+                                        initial={{
+                                            opacity: 0,
+                                            y: 100,
+                                        }}
+                                        animate={{
+                                            opacity: 1,
+                                            y: 0,
+                                        }}
+                                        exit={{
+                                            opacity: 0,
+                                            y: 100,
+                                        }}
+                                        transition={{
+                                            duration: 0.8,
+                                            type: "spring",
+                                            stiffness: 100,
+                                            damping: 15,
+                                        }}
+                                    >
+                                        <button
+                                            className="close"
+                                            onClick={() => setShowToast(false)}
+                                            aria-label="Close notification"
+                                        >
+                                            <i className="fa-regular fa-circle-xmark"></i>
+                                        </button>
+                                
+                                        <h4>
+                                            <motion.span
+                                                className="mobileIcon"
+                                                animate={{
+                                                    rotate: [0, -10, 10, -10, 10, 0],
+                                                    x: [0, -2, 2, -2, 2, 0],
+                                                }}
+                                                transition={{
+                                                    duration: 0.7,
+                                                    repeat: Infinity,
+                                                    repeatDelay: 2,
+                                                    ease: "easeInOut",
+                                                }}
+                                            >
+                                                <i className="fa-solid fa-mobile-screen"></i>
+                                            </motion.span>
+                                
+                                            Switch to mobile phone
+                                            <span className="d-block">
+                                                (small screen)
+                                            </span>
+                                            for another experience
+                                        </h4>
+                                    
+                                        <div className="toastProgress" />
+                                    
+                                    </motion.div>
+                                )}
                             
                             </div>
                         

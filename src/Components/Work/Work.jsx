@@ -15,6 +15,7 @@ export default function Work() {
 
     const categories = [
         { label: 'All', key: 'all' },
+        { label: 'Full-Stack Projects', key: 'Full-Stack Projects' },
         { label: 'React Projects', key: 'React Projects' },
         { label: 'Vanilla JS', key: 'Vanilla JS' },
         { label: 'HTML & CSS', key: 'HTML & CSS' },
@@ -79,11 +80,24 @@ export default function Work() {
                     
                     </div>
                 
-                    <div className="row justify-content-center">
+                    <motion.div
+                        key={activeCategory}
+                        className="row justify-content-center"
+                        initial='hidden'
+                        animate='visible'
+                        variants={{
+                            hidden: {},
+                            visible: {
+                                transition: {
+                                    staggerChildren: 0.15
+                                }
+                            }
+                        }}
+                    >
                     
                         {filtered.map((work) => (
                         
-                            <motion.div className="col-md-6 col-lg-4 mb-4" key={work.id} variants={itemVariantsFromDown}>
+                            <motion.div className="col-md-6 col-lg-4 mb-4" key={work.id} layout variants={itemVariantsFromDown}>
                             
                                 <div className="project">
                                 
@@ -137,7 +151,7 @@ export default function Work() {
                                     
                                         <div className="project-buttons">
                                         
-                                            { work.liveDemo.length <= 0 ? 
+                                            { work.liveDemo?.length <= 0 ? 
                                             
                                                 <Link to={`/project/${work.rank}`} rel="noreferrer" className="primaryBtn">
                                                 
@@ -155,7 +169,7 @@ export default function Work() {
                                                     </a> 
                                             }
                                         
-                                            { work.liveDemo.length > 0 && ( 
+                                            { work.liveDemo?.length > 0 && ( 
                                             
                                                 <a
                                                     href={work.githubURL}
@@ -178,7 +192,7 @@ export default function Work() {
                         
                         ))}
                     
-                    </div>
+                    </motion.div>
                 
                     <div className="btns d-flex justify-content-center gap-2 d-md-none">
                     

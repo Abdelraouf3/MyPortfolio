@@ -54,6 +54,16 @@ export default function Header2() {
 
     }, [location]);
 
+    const [showToast, setShowToast] = useState(true);
+
+    useEffect(() => {
+        const timer = setTimeout(() => {
+            setShowToast(false);
+        }, 6000);
+
+        return () => clearTimeout(timer);
+    }, []);
+
     return (
     
         <>
@@ -62,7 +72,7 @@ export default function Header2() {
                 
                 <div className="container">
                     
-                    <div className="d-flex align-items-baseline">
+                    <div className="d-flex gap-2 align-items-baseline">
                     
                         <div className="logo">
                         
@@ -113,7 +123,66 @@ export default function Header2() {
                                     
                                     </label>
                                 
-                                </motion.div>
+                        </motion.div>
+                    
+                        {showToast && (
+                            <motion.div
+                                className="toastBox"
+                                initial={{
+                                    opacity: 0,
+                                    y: 100,
+                                }}
+                                animate={{
+                                    opacity: 1,
+                                    y: 0,
+                                }}
+                                exit={{
+                                    opacity: 0,
+                                    y: 100,
+                                }}
+                                transition={{
+                                    duration: 0.8,
+                                    type: "spring",
+                                    stiffness: 100,
+                                    damping: 15,
+                                }}
+                            >
+                                <button
+                                    className="close"
+                                    onClick={() => setShowToast(false)}
+                                    aria-label="Close notification"
+                                >
+                                    <i className="fa-regular fa-circle-xmark"></i>
+                                </button>
+                        
+                                <h4>
+                                    <motion.span
+                                        className="mobileIcon"
+                                        animate={{
+                                            rotate: [0, -10, 10, -10, 10, 0],
+                                            x: [0, -2, 2, -2, 2, 0],
+                                        }}
+                                        transition={{
+                                            duration: 0.7,
+                                            repeat: Infinity,
+                                            repeatDelay: 2,
+                                            ease: "easeInOut",
+                                        }}
+                                    >
+                                        <i className="fa-solid fa-laptop"></i>
+                                    </motion.span>
+                        
+                                    Switch to laptop or PC
+                                    <span className="d-block">
+                                        (large screen)
+                                    </span>
+                                    for another experience
+                                </h4>
+                            
+                                <div className="toastProgress" />
+                            
+                            </motion.div>
+                        )}
                     
                     </div>
             

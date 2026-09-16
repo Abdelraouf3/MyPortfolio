@@ -112,7 +112,7 @@ export default function Home() {
                                     }}
                                     ></motion.span>
                                 
-                                    <img src={process.env.PUBLIC_URL + profileImg}  alt="Personal-image" loading='lazy' />
+                                    <img src={process.env.PUBLIC_URL + profileImg}  alt="Personal-image" />
                                 
                                     <div className="followSocial d-flex align-items-center">
                                 

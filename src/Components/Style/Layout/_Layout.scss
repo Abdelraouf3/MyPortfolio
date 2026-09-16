@@ -215,7 +215,7 @@
     -o-transition: all .5s;
 
     &:hover {
-        background-color: $lightBlack;
+        background-color: var(--color-text);
         color: var(--color-bg);
     }
 }
