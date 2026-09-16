@@ -55,11 +55,7 @@ function App() {
 
     <>
     
-      {showIntro && (
-        <Intro onComplete={handleIntroComplete} />
-      )}
-    
-      <RouterProvider router={router} />
+      {showIntro ? ( <Intro onComplete={handleIntroComplete} /> ) : ( <RouterProvider router={router} /> )}
     
     </>
 
